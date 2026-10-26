@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>stem.connect · STEM opportunities outside school</title>
+  <meta name="description" content="341 STEM programs, internships, competitions, clubs, volunteer roles, courses and certifications for high schoolers in IPSD 204, Illinois and the U.S. Each one checked on its official site." />
+  <meta name="theme-color" content="#f4efe4" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="stem.connect" />
+  <meta property="og:title" content="stem.connect · STEM opportunities outside school" />
+  <meta property="og:description" content="Internships, programs, competitions, clubs, volunteering, courses and certifications for high schoolers in IPSD 204 and beyond." />
+  <meta property="og:image" content="og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preload" href="data.json?v=14" as="fetch" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=14" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M12 4v9L5 26c-1 2 0 3 2 3h18c2 0 3-1 2-3l-7-13V4M10 4h12' fill='none' stroke='%232b4a8f' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/><path d='M9 21h14' stroke='%23c2412d' stroke-width='2.4' stroke-linecap='round'/></svg>" />
+  <script type="module" src="app.js?v=14"></script>
+</head>
+<body>
+  <a class="skip" href="#app">Skip to content</a>
+
+  <header class="header">
+    <div class="topbar container">
+      <a href="#/" class="brand" aria-label="stem.connect home">
+        <span class="brand-a">stem</span><span class="brand-b">connect</span>
+        <svg class="brand-line" viewBox="0 0 120 10" preserveAspectRatio="none" aria-hidden="true"><path d="M2 6c14-5 26 3 40-1s26-4 40 0 24 2 36-2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+      </a>
+      <form class="top-search" id="top-search" role="search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.6-4.6"/></svg>
+        <input id="top-q" type="search" placeholder="Search everything" aria-label="Search all listings" autocomplete="off" />
+      </form>
+      <div class="top-actions">
+        <a class="top-quiz" href="#/quiz">Find your direction</a>
+        <a class="top-dash" href="#/dashboard" aria-label="My dashboard">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5h11v17l-5.5-4-5.5 4z"/></svg>
+          <span class="top-dash-label">My dashboard</span>
+          <span class="count" id="saved-count"></span>
+        </a>
+      </div>
+    </div>
+    <nav class="tabs" aria-label="Sections">
+      <div class="container tabs-inner">
+        <div class="tab-list" id="tabs"></div>
+        <div class="more" id="more" hidden>
+          <button class="tab more-btn" id="more-btn" aria-haspopup="true" aria-expanded="false">More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="more-menu" id="more-menu" role="menu" hidden></div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="app" tabindex="-1"></main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <a href="#/" class="brand small"><span class="brand-a">stem</span><span class="brand-b">connect</span></a>
+        <p>Made by students in IPSD 204. For clubs at your school, use <a href="https://mosaic-204.vercel.app/" target="_blank" rel="noopener">Mosaic</a>.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#/all">All listings</a>
+        <a href="#/deadlines">Deadlines</a>
+        <a href="#/dashboard">My dashboard</a>
+        <a href="#/quiz">Quiz</a>
+        <a href="#/suggest">Suggest a listing</a>
+      </div>
+    </div>
+    <div class="container footer-note mono" id="checked-note"></div>
+  </footer>
+
+  <aside id="drawer" class="drawer" aria-hidden="true" aria-labelledby="drawer-title" role="dialog" aria-modal="true">
+    <div class="drawer-scrim" data-close></div>
+    <div class="drawer-panel" tabindex="-1"></div>
+  </aside>
+</body>
+</html>
