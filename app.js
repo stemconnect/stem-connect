@@ -2,7 +2,7 @@
 
 // Set to an email address to let "Suggest a listing" open a pre-filled email.
 const SUBMIT_EMAIL = "";
-const V = "16"; // bump with the ?v= in index.html when data changes
+const V = "17"; // bump with the ?v= in index.html when data changes
 
 const app = document.getElementById("app");
 const drawer = document.getElementById("drawer");
@@ -680,88 +680,52 @@ function viewFields() {
     }).join("")}</ol>
   </div>`;
 }
-const jobCard = (c) => `<article class="job">
-  <h3>${esc(c.title)}</h3>
-  <ul>${c.tasks.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
-  <p class="job-edu mono">${esc(c.edu)}</p>
-  <a class="link" href="${esc(c.url)}" target="_blank" rel="noopener">More on O*NET ${ICON.ext}</a>
-</article>`;
-const storyCard = (s) => `<a class="story" href="${esc(s.url)}" target="_blank" rel="noopener">
-  <span class="mono muted">${esc(fmt(s.date, { month: "short", year: "numeric" }))}</span>
-  <h3>${esc(s.title)}</h3>
-  <p>${esc(s.blurb)}</p>
-  <span class="story-src">Read it on Science News Explores ${ICON.ext}</span>
-</a>`;
+const FIELD_PREVIEW = 6;
 function viewField(key) {
   const n = NICHES[key];
   if (!n) return viewFields();
   const X = EX.FIELDS[key];
   const items = OPPORTUNITIES.filter((o) => o.niches.includes(key));
   const groups = CATS.map((c) => [c, sortList(items.filter((o) => c.types.includes(o.type)), "easy")]).filter(([, x]) => x.length);
-  const ladder = STEPS.map((s) => [s, sortList(items.filter((o) => stepOf(o) === s.key), "easy")]);
+  const wv = WV_CLUBS.filter((o) => o.niches.includes(key));
   const crosses = EX.CROSSOVERS.filter((c) => c.fields.includes(key));
-  const crossCard = (c) => {
-    const others = c.fields.filter((f) => f !== key), job = EX.CAREERS[c.career];
-    const both = items.filter((o) => o.niches.includes(others[0])).length;
-    return `<article class="cross">
-      <div class="mono muted">${[key, ...others].map((f) => esc(NICHES[f].label)).join(" + ")}</div>
-      <h3>${esc(c.name)}</h3>
-      <p>${esc(c.blurb)}</p>
-      <p class="cross-links"><a class="link" href="${esc(job.url)}" target="_blank" rel="noopener">The job: ${esc(job.title)} ${ICON.ext}</a>${both ? `<br><a class="link" href="#/all?field=${key}&also=${others[0]}">${both} listings in both fields</a>` : ""}</p>
-    </article>`;
-  };
+  const ext = (url, text) => `<a class="link" href="${esc(url)}" target="_blank" rel="noopener">${esc(text)} ${ICON.ext}</a>`;
   app.innerHTML = `<div class="container">
     <header class="page-head">
       <div class="crumbs mono"><a href="#/">Home</a> / <a href="#/fields">Fields</a> / ${esc(n.label)}</div>
       <h1>${esc(n.label)}</h1>
-      <p class="lede">${esc(X.intro)} ${items.length} listings.</p>
-      <nav class="jump" aria-label="On this page">
-        <a href="#f-work" data-jump="f-work">What the work is like</a>
-        <a href="#f-ladder" data-jump="f-ladder">Try it</a>
-        ${crosses.length ? `<a href="#f-cross" data-jump="f-cross">Crossovers</a>` : ""}
-        <a href="#f-teens" data-jump="f-teens">Real teens</a>
-        ${WV_CLUBS.some((o) => o.niches.includes(key)) ? `<a href="#f-wv" data-jump="f-wv">At WV</a>` : ""}
-        <a href="#f-all" data-jump="f-all">Everything <span class="mono">${items.length}</span></a>
-      </nav>
+      <p class="lede">${esc(X.intro)}</p>
+      <nav class="jump" aria-label="On this page">${groups.map(([c, x]) => `<a href="#g-${c.slug}" data-jump="g-${c.slug}">${esc(c.tab)} <span class="mono">${x.length}</span></a>`).join("")}</nav>
+      ${wv.length ? `<p class="wv-line"><span class="aud">At WV</span> ${wv.map((o) => `<button class="link" data-open="${o.id}">${esc(o.name)}</button>`).join(", ")}</p>` : ""}
     </header>
-    <section class="today slim">${factSlot([key])}</section>
 
-    <section class="group" id="f-work">
-      <h2>What the work looks like</h2>
-      <p class="sec-note">From O*NET, the U.S. Department of Labor.</p>
-      <div class="jobs">${X.careers.map((c) => jobCard(EX.CAREERS[c])).join("")}</div>
-      <h3 class="sub-h">Smaller areas inside ${esc(n.label)}</h3>
-      <ul class="subs">${X.subs.map((s) => `<li><b>${esc(s.name)}</b><span>${esc(s.blurb)}</span>${s.topic ? `<a class="link" href="${EX.SOURCES.topic}${s.topic}" target="_blank" rel="noopener">Read about it ${ICON.ext}</a>` : ""}</li>`).join("")}</ul>
-    </section>
+    ${groups.map(([c, x]) => `<section class="group" id="g-${c.slug}">
+      <h2>${esc(c.title)} <span class="mono muted">${x.length}</span></h2>
+      ${cards(x.slice(0, FIELD_PREVIEW), c.types.length > 1)}
+      ${x.length > FIELD_PREVIEW ? `<div class="more-row"><a class="btn" href="#/${c.slug}?field=${key}">See all ${x.length}</a></div>` : ""}
+    </section>`).join("")}
 
-    <section class="group" id="f-ladder">
-      <h2>Try it, one step at a time</h2>
-      <ol class="ladder">${ladder.map(([s, list], i) => `<li class="rung">
-        <div class="rung-head"><span class="rung-n mono">${i + 1}</span><b>${s.label}</b><small>${s.hint}</small></div>
-        ${list.length ? `<div class="mini-list">${list.slice(0, 3).map(miniRow).join("")}</div>${list.length > 3 ? `<a class="link rung-more" href="#/all?field=${key}&step=${s.key}">See all ${list.length}</a>` : ""}` : `<p class="muted rung-none">Nothing listed for this step yet. Try the next one.</p>`}
-      </li>`).join("")}</ol>
-    </section>
-
-    ${crosses.length ? `<section class="group" id="f-cross">
-      <h2>Where ${esc(n.label)} crosses over</h2>
-      <div class="crosses">${crosses.map(crossCard).join("")}</div>
-    </section>` : ""}
-
-    <section class="group" id="f-teens">
-      <h2>Real teens doing ${esc(n.label)}</h2>
-      <p class="sec-note">From Science News Explores.</p>
-      <div class="stories">${X.stories.map((s) => storyCard(EX.STORIES[s])).join("")}</div>
-    </section>
-
-    ${WV_CLUBS.some((o) => o.niches.includes(key)) ? `<section class="group" id="f-wv">
-      <h2>Clubs at Waubonsie Valley</h2>
-      <p class="sec-note">From <a class="link" href="https://mosaic-204.vercel.app/" target="_blank" rel="noopener">Mosaic</a>.</p>
-      <div class="mini-list wv-list">${WV_CLUBS.filter((o) => o.niches.includes(key)).map(miniRow).join("")}</div>
-    </section>` : ""}
-
-    <section class="group" id="f-all">
-      <h2>Everything in ${esc(n.label)} <span class="mono muted">${items.length}</span></h2>
-      ${groups.map(([c, x]) => `<h3 class="sub-h">${esc(c.title)} <span class="mono muted">${x.length}</span></h3>${cards(x, c.types.length > 1)}`).join("")}
+    <section class="group about">
+      <h2>About ${esc(n.label)}</h2>
+      <div class="today slim">${factSlot([key])}</div>
+      <details>
+        <summary>What people in these jobs do</summary>
+        <ul class="about-list">${X.careers.map((k) => EX.CAREERS[k]).map((c) => `<li>${ext(c.url, c.title)}<span>${esc(c.tasks.join(" · "))}</span><small class="mono">${esc(c.edu)}</small></li>`).join("")}</ul>
+        <p class="sec-note">From O*NET, the U.S. Department of Labor.</p>
+      </details>
+      <details>
+        <summary>Smaller areas and crossovers</summary>
+        <p class="about-subs">${X.subs.map((x) => (x.topic ? `<a class="link" href="${EX.SOURCES.topic}${x.topic}" target="_blank" rel="noopener">${esc(x.name)}</a>` : esc(x.name))).join(" · ")}</p>
+        ${crosses.length ? `<ul class="about-list">${crosses.map((c) => {
+          const others = c.fields.filter((f) => f !== key), both = items.filter((o) => o.niches.includes(others[0])).length;
+          return `<li><b>${esc(c.name)}</b> <span class="mono muted">${[key, ...others].map((f) => esc(NICHES[f].label)).join(" + ")}</span><span>${esc(c.blurb)}</span>${both ? `<a class="link" href="#/all?field=${key}&also=${others[0]}">${both} listings in both</a>` : ""}</li>`;
+        }).join("")}</ul>` : ""}
+      </details>
+      <details>
+        <summary>Real teens doing ${esc(n.label)}</summary>
+        <ul class="about-list">${X.stories.map((k) => EX.STORIES[k]).map((st) => `<li>${ext(st.url, st.title)}<span>${esc(st.blurb)}</span></li>`).join("")}</ul>
+        <p class="sec-note">From Science News Explores.</p>
+      </details>
     </section>
   </div>`;
   app.querySelectorAll("[data-jump]").forEach((a) => a.addEventListener("click", (e) => {
