@@ -2,7 +2,7 @@
 
 // Set to an email address to let "Suggest a listing" open a pre-filled email.
 const SUBMIT_EMAIL = "";
-const V = "17"; // bump with the ?v= in index.html when data changes
+const V = "18"; // bump with the ?v= in index.html when data changes
 
 const app = document.getElementById("app");
 const drawer = document.getElementById("drawer");
@@ -691,23 +691,20 @@ function viewField(key) {
   const crosses = EX.CROSSOVERS.filter((c) => c.fields.includes(key));
   const ext = (url, text) => `<a class="link" href="${esc(url)}" target="_blank" rel="noopener">${esc(text)} ${ICON.ext}</a>`;
   app.innerHTML = `<div class="container">
-    <header class="page-head">
+    <header class="page-head field-head">
+      <div>
       <div class="crumbs mono"><a href="#/">Home</a> / <a href="#/fields">Fields</a> / ${esc(n.label)}</div>
       <h1>${esc(n.label)}</h1>
       <p class="lede">${esc(X.intro)}</p>
       <nav class="jump" aria-label="On this page">${groups.map(([c, x]) => `<a href="#g-${c.slug}" data-jump="g-${c.slug}">${esc(c.tab)} <span class="mono">${x.length}</span></a>`).join("")}</nav>
       ${wv.length ? `<p class="wv-line"><span class="aud">At WV</span> ${wv.map((o) => `<button class="link" data-open="${o.id}">${esc(o.name)}</button>`).join(", ")}</p>` : ""}
-    </header>
-
-    ${groups.map(([c, x]) => `<section class="group" id="g-${c.slug}">
-      <h2>${esc(c.title)} <span class="mono muted">${x.length}</span></h2>
-      ${cards(x.slice(0, FIELD_PREVIEW), c.types.length > 1)}
-      ${x.length > FIELD_PREVIEW ? `<div class="more-row"><a class="btn" href="#/${c.slug}?field=${key}">See all ${x.length}</a></div>` : ""}
-    </section>`).join("")}
-
-    <section class="group about">
+      </div>
+    <aside class="field-about" aria-label="About ${esc(n.label)}">
       <h2>About ${esc(n.label)}</h2>
-      <div class="today slim">${factSlot([key])}</div>
+      <details ${narrow() ? "" : "open"}>
+        <summary>Did you know?</summary>
+        <div class="today slim">${factSlot([key])}</div>
+      </details>
       <details>
         <summary>What people in these jobs do</summary>
         <ul class="about-list">${X.careers.map((k) => EX.CAREERS[k]).map((c) => `<li>${ext(c.url, c.title)}<span>${esc(c.tasks.join(" · "))}</span><small class="mono">${esc(c.edu)}</small></li>`).join("")}</ul>
@@ -726,7 +723,15 @@ function viewField(key) {
         <ul class="about-list">${X.stories.map((k) => EX.STORIES[k]).map((st) => `<li>${ext(st.url, st.title)}<span>${esc(st.blurb)}</span></li>`).join("")}</ul>
         <p class="sec-note">From Science News Explores.</p>
       </details>
-    </section>
+    </aside>
+    </header>
+
+    ${groups.map(([c, x]) => `<section class="group" id="g-${c.slug}">
+      <h2>${esc(c.title)} <span class="mono muted">${x.length}</span></h2>
+      ${cards(x.slice(0, FIELD_PREVIEW), c.types.length > 1)}
+      ${x.length > FIELD_PREVIEW ? `<div class="more-row"><a class="btn" href="#/${c.slug}?field=${key}">See all ${x.length}</a></div>` : ""}
+    </section>`).join("")}
+
   </div>`;
   app.querySelectorAll("[data-jump]").forEach((a) => a.addEventListener("click", (e) => {
     e.preventDefault();

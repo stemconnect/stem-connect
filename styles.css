@@ -393,21 +393,27 @@ main { outline: none; min-height: 70vh; padding-bottom: 72px; }
 /* ---------- Field pages ---------- */
 .wv-line { margin-top: 16px; font-size: 15px; line-height: 1.8; }
 .wv-line .link { font-size: 15px; }
-.about { border-top: 1.5px solid var(--ink); padding-top: 28px; margin-top: 64px; }
-.about .today { margin: 0 0 20px; }
-.about details { border-bottom: 1px solid var(--rule); }
-.about summary { cursor: pointer; list-style: none; font-family: var(--display); font-size: 22px; padding: 14px 0; display: flex; justify-content: space-between; align-items: center; }
-.about summary::-webkit-details-marker { display: none; }
-.about summary::after { content: "+"; font-family: var(--mono); color: var(--ink-3); font-size: 20px; }
-.about details[open] summary::after { content: "–"; }
-.about details > *:last-child { margin-bottom: 18px; }
+.field-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 420px); gap: 40px; align-items: start; }
+@media (max-width: 900px) { .field-head { grid-template-columns: 1fr; gap: 24px; } }
+.field-about { background: var(--card); padding: 16px 20px 6px; box-shadow: 0 8px 18px -14px rgba(60, 45, 20, .45); }
+.field-about h2 { font-size: 15px; font-family: var(--mono); font-weight: 400; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-3); margin-bottom: 4px; }
+.field-about details { border-top: 1px solid var(--rule); }
+.field-about summary { cursor: pointer; list-style: none; font-family: var(--display); font-size: 19px; padding: 11px 0; display: flex; justify-content: space-between; align-items: center; }
+.field-about summary::-webkit-details-marker { display: none; }
+.field-about summary::after { content: "+"; font-family: var(--mono); color: var(--ink-3); font-size: 18px; }
+.field-about details[open] summary::after { content: "–"; }
+.field-about details > *:last-child { margin-bottom: 14px; }
+.field-about .today { margin: 0; }
+.field-about .fact-slot { padding: 0; box-shadow: none; background: none; }
+.field-about .fact-text { font-size: 19px; }
+.field-about .fact-src { font-size: 14px; margin-top: 10px; }
 .about-list { list-style: none; margin: 0; padding: 0; }
-.about-list li { display: flex; flex-direction: column; gap: 2px; padding: 8px 0; }
-.about-list li > span { color: var(--ink-2); font-size: 15px; }
+.about-list li { display: flex; flex-direction: column; gap: 2px; padding: 7px 0; }
+.about-list li > span { color: var(--ink-2); font-size: 14.5px; }
 .about-list small { color: var(--ink-3); font-size: 12px; }
-.about-list .link { font-size: 16px; display: inline-flex; align-items: center; gap: 4px; align-self: flex-start; }
-.about-subs { line-height: 1.9; margin-bottom: 10px; }
-.about .sec-note { margin: 4px 0 0; }
+.about-list .link { font-size: 15px; display: inline-flex; align-items: center; gap: 4px; align-self: flex-start; }
+.about-subs { line-height: 1.9; margin-bottom: 8px; font-size: 15px; }
+.field-about .sec-note { margin: 4px 0 0; font-size: 13px; }
 .crosses { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
 .cross { padding: 14px 0 0; border-top: 1.5px solid var(--ink); }
 .cross h3 { font-size: 23px; margin: 4px 0 6px; }
