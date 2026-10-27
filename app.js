@@ -2,7 +2,7 @@
 
 // Set to an email address to let "Suggest a listing" open a pre-filled email.
 const SUBMIT_EMAIL = "";
-const V = "14"; // bump with the ?v= in index.html when data changes
+const V = "16"; // bump with the ?v= in index.html when data changes
 
 const app = document.getElementById("app");
 const drawer = document.getElementById("drawer");
@@ -15,7 +15,7 @@ try {
   app.innerHTML = `<div class="container"><div class="empty" style="margin-top:48px"><b>The listings didn't load.</b>Refresh the page. If you opened index.html straight from your files, run <code>python3 -m http.server 5174</code> in this folder and open http://localhost:5174 instead.</div></div>`;
   throw new Error("data.json failed to load");
 }
-const { CHECKED, NICHES, TYPES, SCOPES, COSTS, OPPORTUNITIES } = DB;
+const { CHECKED, WV_CHECKED, NICHES, TYPES, SCOPES, COSTS, OPPORTUNITIES } = DB;
 const byId = Object.fromEntries(OPPORTUNITIES.map((o) => [o.id, o]));
 
 // Field pages, careers and stories live in explore.json and load the first time a page needs them.
@@ -50,12 +50,15 @@ const CATS = [
   { slug: "internships", tab: "Internships", title: "Internships & Research", types: ["research"], blurb: "Research spots and internships in labs, museums and companies." },
   { slug: "programs", tab: "Programs", title: "Programs & Camps", types: ["summer", "program", "event"], blurb: "Summer programs, camps, year-round programs and one-day events." },
   { slug: "competitions", tab: "Competitions", title: "Competitions", types: ["competition"], blurb: "Contests, olympiads and science fairs." },
-  { slug: "clubs", tab: "Clubs", title: "Clubs & Organizations", types: ["club"], blurb: "Teams, clubs and memberships outside of school." },
+  { slug: "clubs", tab: "Clubs", title: "Clubs & Organizations", types: ["club"], blurb: "Teams, clubs and memberships, including clubs at WV." },
   { slug: "volunteering", tab: "Volunteering", title: "Volunteering", types: ["volunteer"], blurb: "Volunteer roles and citizen science projects." },
   { slug: "courses", tab: "Courses", title: "Courses", types: ["course"], blurb: "Online and college courses you can take now." },
   { slug: "certifications", tab: "Certifications", title: "Certifications", types: ["cert"], blurb: "Licenses and certifications you can earn in high school." },
 ];
 const catOf = (o) => CATS.find((c) => c.types.includes(o.type));
+// Clubs at Waubonsie Valley come from Mosaic. Outside listings with `wv` name the WV club that already does it.
+const atWV = (o) => o.school === "wv";
+const WV_CLUBS = OPPORTUNITIES.filter(atWV);
 
 /* ---------- helpers ---------- */
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -103,12 +106,10 @@ document.getElementById("checked-note").textContent =
 /* ---------- tabs (extra tabs fold into "More" when they don't fit) ---------- */
 // p = priority: higher numbers fold into "More" first.
 const TABS = [
-  { href: "#/all", label: "All", key: "all", p: 0 },
   { href: "#/fields", label: "Fields", key: "fields", p: 0 },
   ...CATS.map((c, i) => ({ href: `#/${c.slug}`, label: c.tab, key: c.slug, p: i < 4 ? 2 : 3 })),
   { href: "#/deadlines", label: "Deadlines", key: "deadlines", p: 1 },
   { href: "#/quiz", label: "Quiz", key: "quiz", p: 1 },
-  { href: "#/journal", label: "Journal", key: "journal", p: 3 },
 ];
 const tabList = document.getElementById("tabs");
 const moreWrap = document.getElementById("more");
@@ -245,6 +246,8 @@ function card(o, i = 0, showType = true) {
     <p>${esc(o.summary)}</p>
     <div class="meta">
       <span class="step-tag s-${stepOf(o)}">${STEP[stepOf(o)].short}</span>
+      ${atWV(o) ? `<span class="aud">At WV</span>` : ""}
+      ${o.wv && byId[o.wv] ? `<span class="aud">WV has it: ${esc(byId[o.wv].name)}</span>` : ""}
       ${o.audience ? `<span class="aud">${esc(o.audience)}</span>` : ""}
       ${cost(o)}
       <span>Grades ${gradeText(o.grades)}</span>
@@ -300,6 +303,8 @@ function openDrawer(id) {
       <h2 id="drawer-title">${esc(o.name)}</h2>
       <div class="d-org">${esc(o.org)} · ${esc(o.location)}</div>
       ${o.audience ? `<p class="aud" style="margin-top:8px">${esc(o.audience)}</p>` : ""}
+      ${o.wv && byId[o.wv] ? `<p class="wv-note">Waubonsie Valley already has this: <button class="link" data-open="${o.wv}">${esc(byId[o.wv].name)}</button></p>` : ""}
+      ${o.partOf && byId[o.partOf] ? `<p class="wv-note">Part of <button class="link" data-open="${o.partOf}">${esc(byId[o.partOf].name)}</button></p>` : ""}
       <p class="d-sum">${esc(o.summary)}</p>
       <dl class="d-grid">
         <div><dt>Type</dt><dd>${esc(TYPES[o.type].label)}</dd></div>
@@ -313,12 +318,10 @@ function openDrawer(id) {
       ${o.facts.length ? `<section class="d-sec"><h3>From the official site</h3><ul class="facts">${o.facts.map((f) => `<li>${esc(f)}</li>`).join("")}</ul></section>` : ""}
       ${dates.length ? `<section class="d-sec"><h3>Dates</h3><div class="dl">${dates.map((d) => dlRow(o, d, false)).join("")}</div>${dates.some((d) => daysUntil(d.date) >= 0) ? `<button class="link cal-add" data-ics="${o.id}">Add to my calendar, with reminders</button>` : ""}</section>` : ""}
       <div class="d-actions">
-        <a class="btn primary" href="${esc(o.url)}" target="_blank" rel="noopener">Official site ${ICON.ext}</a>
+        <a class="btn primary" href="${esc(o.url)}" target="_blank" rel="noopener">${atWV(o) ? "View on Mosaic" : "Official site"} ${ICON.ext}</a>
         <button class="btn save-btn" data-save="${o.id}" aria-pressed="${on}">${ICON.mark}<span data-t>${on ? "On your dashboard" : "Save to dashboard"}</span></button>
-        <a class="btn" href="#/checkin/${o.id}">${journal.some((e) => e.item === o.id) ? "Log it again" : "I tried this"}</a>
       </div>
-      ${journal.some((e) => e.item === o.id) ? `<p class="mono muted" style="margin-top:10px">In your journal ${journal.filter((e) => e.item === o.id).length}×. <a class="link" href="#/journal">See journal</a></p>` : ""}
-      <p class="source mono">Source: ${esc(o.url)} · checked ${esc(fmt(CHECKED))}</p>
+      <p class="source mono">${atWV(o) ? `From Mosaic, under Waubonsie Valley · checked ${esc(fmt(WV_CHECKED))}` : `Source: ${esc(o.url)} · checked ${esc(fmt(CHECKED))}`}</p>
     </div>`;
   drawer.classList.add("open");
   drawer.setAttribute("aria-hidden", "false");
@@ -359,13 +362,13 @@ function sortList(items, how) {
     return da.localeCompare(db) || SCOPE_ORDER[a.scope] - SCOPE_ORDER[b.scope] || a.name.localeCompare(b.name);
   });
 }
-const hayOf = (o) => (o._hay ||= [o.name, o.org, o.location, o.summary, ...o.facts, ...o.niches.map((n) => NICHES[n].label), TYPES[o.type].label].join(" ").toLowerCase());
+const hayOf = (o) => (o._hay ||= [o.name, o.org, o.location, o.summary, ...o.facts, ...o.niches.map((n) => NICHES[n].label), TYPES[o.type].label, atWV(o) ? "waubonsie valley wv school" : ""].join(" ").toLowerCase());
 
 function viewDatabase(slug, qs) {
   const cat = CATS.find((c) => c.slug === slug);
   const base = cat ? OPPORTUNITIES.filter((o) => cat.types.includes(o.type)) : OPPORTUNITIES;
   const p = new URLSearchParams(qs);
-  const F = { q: p.get("q") || "", field: p.get("field") || "", type: p.get("type") || "", where: p.get("where") || "", grade: p.get("grade") || "", cost: p.get("cost") || "", fresh: p.get("fresh") === "1", step: p.get("step") || "", also: NICHES[p.get("also")] ? p.get("also") : "", fits: p.get("fits") === "1" && !!profile, sort: p.get("sort") || "easy" };
+  const F = { q: p.get("q") || "", field: p.get("field") || "", type: p.get("type") || "", where: p.get("where") || "", grade: p.get("grade") || "", cost: p.get("cost") || "", fresh: p.get("fresh") === "1", step: p.get("step") || "", also: NICHES[p.get("also")] ? p.get("also") : "", fits: p.get("fits") === "1" && !!profile, wv: p.get("wv") === "1", sort: p.get("sort") || "easy" };
   const typeOpts = cat ? cat.types : Object.keys(TYPES);
   const showType = !cat || cat.types.length > 1;
   const sel = (id, label, opts, cur) => `<label class="pick"><span>${label}</span><select id="${id}">${opts.map(([v, t]) => `<option value="${v}" ${cur == v ? "selected" : ""}>${esc(t)}</option>`).join("")}</select></label>`;
@@ -388,6 +391,7 @@ function viewDatabase(slug, qs) {
       ${sel("grade", "Grade", [["", "Any grade"], ...[9, 10, 11, 12].map((g) => [g, `${g}th grade`])], F.grade)}
       ${sel("cost", "Cost", [["", "Any cost"], ["free", "Free or paid to you"], ["aid", "Free, low cost or aid"], ["stipend", "Paid to you"]], F.cost)}
       <label class="check"><input type="checkbox" id="fresh" ${F.fresh ? "checked" : ""}/> Open to 9th graders</label>
+      ${base.some(atWV) ? `<label class="check"><input type="checkbox" id="wv" ${F.wv ? "checked" : ""}/> Clubs at WV</label>` : ""}
       ${profile ? `<label class="check"><input type="checkbox" id="fits" ${F.fits ? "checked" : ""}/> Fits my quiz answers</label>` : ""}
     </div>
     ${F.also ? `<p class="also-note mono">Also in ${esc(NICHES[F.also].label)} · <a class="link" href="#/${slug}?field=${F.field}">remove</a></p>` : ""}
@@ -424,6 +428,7 @@ function viewDatabase(slug, qs) {
       if (F.also && !o.niches.includes(F.also)) return false;
       if (F.step && stepOf(o) !== F.step) return false;
       if (F.fits && !fitsLimits(o, profile.limits)) return false;
+      if (F.wv && !atWV(o)) return false;
       if (F.type && o.type !== F.type) return false;
       if (F.where && o.scope !== F.where) return false;
       if (F.grade && !o.grades.includes(+F.grade)) return false;
@@ -434,7 +439,7 @@ function viewDatabase(slug, qs) {
       return true;
     }), F.sort);
     shown = PAGE;
-    const nFilters = ["field", "type", "step", "where", "grade", "cost", "fresh", "fits"].filter((k) => F[k]).length;
+    const nFilters = ["field", "type", "step", "where", "grade", "cost", "fresh", "fits", "wv"].filter((k) => F[k]).length;
     document.getElementById("count").textContent = `${items.length} ${items.length === 1 ? "listing" : "listings"}`;
     document.getElementById("clear").hidden = !(F.q || nFilters);
     document.getElementById("fcount").textContent = nFilters || "";
@@ -448,6 +453,7 @@ function viewDatabase(slug, qs) {
   ["field", "type", "step", "where", "grade", "cost", "sort"].forEach((k) => document.getElementById(k)?.addEventListener("change", (e) => { F[k] = e.target.value; update(); }));
   document.getElementById("fresh").addEventListener("change", (e) => { F.fresh = e.target.checked; update(); });
   document.getElementById("fits")?.addEventListener("change", (e) => { F.fits = e.target.checked; update(); });
+  document.getElementById("wv")?.addEventListener("change", (e) => { F.wv = e.target.checked; update(); });
   document.getElementById("clear").addEventListener("click", () => { location.hash = `#/${slug}`; });
   const fb = document.getElementById("filters-btn"), fl = document.getElementById("filters");
   fb.addEventListener("click", () => { const open = !fl.classList.contains("open"); fl.classList.toggle("open", open); fb.setAttribute("aria-expanded", open); });
@@ -460,28 +466,12 @@ function viewDatabase(slug, qs) {
   update();
 }
 
-/* ---------- your path: quiz profile, journal, directions and suggestions ---------- */
-// What students can say they liked about something they tried, and which fields that points to.
-const PARTS = [
-  { key: "hands", label: "Building with my hands", phrase: "hands-on", fields: ["robo", "eng"] },
-  { key: "coding", label: "Coding", phrase: "coding", fields: ["cs", "ai"] },
-  { key: "puzzles", label: "Solving puzzles", phrase: "puzzle-solving", fields: ["math", "cyber"] },
-  { key: "research", label: "Reading and research", phrase: "reading and research", fields: [], types: ["research"] },
-  { key: "people", label: "Working with people", phrase: "people", fields: ["med"], types: ["club", "volunteer"] },
-  { key: "outdoors", label: "Being outdoors", phrase: "outdoor", fields: ["env", "bio"] },
-  { key: "lab", label: "Lab experiments", phrase: "lab", fields: ["chem", "bio", "med"] },
-  { key: "design", label: "Designing things", phrase: "design", fields: ["eng", "cs"] },
-  { key: "presenting", label: "Presenting or writing", phrase: "presenting and writing", fields: [] },
-  { key: "competing", label: "Competing", phrase: "competing", fields: [], types: ["competition"] },
-];
-const PART = Object.fromEntries(PARTS.map((p) => [p.key, p]));
-const ENJOY = { 3: "Loved it", 2: "It was OK", 1: "Not for me" };
-const ENERGY = { energized: "Energized", neutral: "Fine", drained: "Drained" };
-const MORE = { yes: "Wants more", maybe: "Maybe more", no: "No more" };
+/* ---------- your path: quiz profile, directions and suggestions ---------- */
+// How-you-like-to-work answers that point to a type of listing.
+const TRAIT_TYPES = { people: ["club", "volunteer"], competing: ["competition"], research: ["research"] };
 
 let profile = store.get("profile", null);
-let journal = store.get("journal", []).filter((e) => e && e.id && Array.isArray(e.fields));
-const saveJournal = () => store.set("journal", journal);
+try { localStorage.removeItem("stemconnect.journal"); } catch {} // the old journal feature, now removed
 
 // Does a listing fit the grade, distance, budget and time the student gave in the quiz?
 function fitsLimits(o, L) {
@@ -496,19 +486,7 @@ function fitsLimits(o, L) {
   return STEP_I[stepOf(o)] <= max;
 }
 
-const liked = (e) => e.enjoy === 3 || (e.enjoy === 2 && e.energy === "energized");
-const checkinWeight = (e) => (e.enjoy - 2) * 3 + (e.energy === "energized" ? 1 : e.energy === "drained" ? -1 : 0) + (e.more === "yes" ? 2 : e.more === "no" ? -2 : 0);
-// Quiz answers set the starting point; every check-in nudges fields up or down.
-function fieldScores() {
-  const s = Object.fromEntries(FIELD_KEYS.map((k) => [k, profile?.scores?.[k] || 0]));
-  journal.forEach((e) => {
-    const w = checkinWeight(e);
-    e.fields.forEach((f) => { if (f in s) s[f] += w; });
-    if (e.enjoy >= 2) e.parts.forEach((t) => PART[t]?.fields.forEach((f) => (s[f] += 1)));
-    (e.dislikes || []).forEach((t) => PART[t]?.fields.forEach((f) => (s[f] -= 1)));
-  });
-  return s;
-}
+const fieldScores = () => Object.fromEntries(FIELD_KEYS.map((k) => [k, profile?.scores?.[k] || 0]));
 function directions() {
   const s = fieldScores();
   const ranked = FIELD_KEYS.filter((k) => s[k] > 0).sort((a, b) => s[b] - s[a]);
@@ -516,76 +494,32 @@ function directions() {
   return ranked.filter((k, i) => i < 2 || s[k] >= s[ranked[0]] * 0.45).slice(0, 4);
 }
 const cap = (t) => t.charAt(0).toUpperCase() + t.slice(1);
+const topWhys = (k, n) => [...new Set((profile?.reasons?.[k] || []).slice().sort((a, b) => b.w - a.w).map((x) => x.why))].slice(0, n);
 function reasonFor(k) {
-  const whys = [...new Set((profile?.reasons?.[k] || []).slice().sort((a, b) => b.w - a.w).map((x) => x.why))].slice(0, 2);
-  const out = whys.length ? [cap(whys.join(", and ")) + "."] : [];
-  const es = journal.filter((e) => e.fields.includes(k));
-  const good = es.filter(liked).length, bad = es.filter((e) => e.enjoy === 1).length;
-  if (good) out.push(`${good} check-in${good > 1 ? "s" : ""} went well.`);
-  if (bad) out.push(`${bad} didn't click.`);
-  return out.join(" ") || "Based on your check-ins.";
+  const whys = topWhys(k, 2);
+  return whys.length ? cap(whys.join(", and ")) + "." : "";
 }
 
-// Plain-language patterns from the journal.
-function patterns() {
-  if (journal.length < 2) return [];
-  const out = [], like = {}, dis = {}, energ = {}, add = (m, t) => (m[t] = (m[t] || 0) + 1);
-  journal.forEach((e) => {
-    e.parts.forEach((t) => { if (liked(e)) add(like, t); else if (e.enjoy === 1) add(dis, t); if (e.energy === "energized") add(energ, t); });
-    (e.dislikes || []).forEach((t) => add(dis, t));
-  });
-  const top = Object.entries(like).sort((a, b) => b[1] - a[1])[0];
-  const low = Object.entries(dis).filter(([t]) => t !== top?.[0]).sort((a, b) => b[1] - a[1])[0];
-  if (top && top[1] >= 2) out.push(`You keep liking the ${PART[top[0]].phrase} parts${low ? ` more than the ${PART[low[0]].phrase} parts` : ""}.`);
-  else if (low && low[1] >= 2) out.push(`The ${PART[low[0]].phrase} parts haven't clicked so far.`);
-  const en = Object.entries(energ).sort((a, b) => b[1] - a[1])[0];
-  if (en && en[1] >= 2 && en[0] !== top?.[0]) out.push(`You usually feel energized after ${PART[en[0]].phrase} work.`);
-  const byF = {};
-  journal.forEach((e) => e.fields.forEach((f) => (byF[f] ||= []).push(e)));
-  const fs = Object.entries(byF).map(([f, es]) => ({ f, es, avg: es.reduce((a, e) => a + e.enjoy, 0) / es.length }));
-  const best = fs.filter((x) => x.es.length >= 2 && x.avg >= 2.5).sort((a, b) => b.avg - a.avg)[0];
-  if (best) out.push(`${NICHES[best.f].label} has mostly gone well (${best.es.length} check-ins). It might be time for a bigger step.`);
-  const nope = fs.find((x) => x.es.every((e) => e.more === "no"));
-  if (nope) out.push(`You said no to more ${NICHES[nope.f].label}. Crossing a field off is progress too.`);
-  const quick = fs.find((x) => x !== best && x.es.length >= 2 && x.es.some(liked) && x.es.every((e) => byId[e.item] && stepOf(byId[e.item]) === "try"));
-  if (quick) out.push(`You've done a few quick tries in ${NICHES[quick.f].label}. A weekend or semester step would tell you more.`);
-  return out.slice(0, 4);
-}
-
-// Suggestions: listings in your directions, one step up the ladder from what you liked.
-const aStep = (o) => ({ try: "a 30-minute start", weekend: "a weekend step", semester: "a semester step", summer: "a summer step" }[stepOf(o)]);
+// Suggestions: listings in your directions that fit your limits. Things you marked Done
+// on the dashboard move that field one step up the ladder.
+const doneIn = (f) => [...saved].map((id) => byId[id]).filter((o) => o && status[o.id] === "done" && o.niches.includes(f)).sort((a, b) => STEP_I[stepOf(b)] - STEP_I[stepOf(a)]);
 function whyFor(o, f) {
-  // Prefer the biggest step you liked, then the most recent.
-  const big = (e) => (byId[e.item] ? STEP_I[stepOf(byId[e.item])] : -1);
-  const good = journal.filter(liked).sort((a, b) => big(b) - big(a) || b.date.localeCompare(a.date) || b.id.localeCompare(a.id));
-  for (const e of good) {
-    const t = e.parts.find((t) => PART[t].fields.includes(f));
-    if (t) return `You liked the ${PART[t].phrase} part of ${e.title}. This is ${aStep(o)} in ${NICHES[f].label}.`;
-    if (e.fields.includes(f)) return `${e.title} went well, so here's ${aStep(o)} in ${NICHES[f].label}.`;
-  }
-  return `Fits your ${NICHES[f].label} direction. It's ${aStep(o)}.`;
+  const done = doneIn(f)[0];
+  return done ? `${NICHES[f].label} · next step after ${done.name}` : NICHES[f].label;
 }
 function suggestions(n = 6) {
   const dirs = directions();
   if (!dirs.length) return [];
   const s = fieldScores();
   const maxStep = { little: 1, some: 2, lots: 3 }[profile?.limits?.time] ?? 3;
-  const tried = new Set(journal.map((e) => e.item).filter(Boolean));
-  const target = {};
-  dirs.forEach((f) => {
-    const steps = journal.filter((e) => liked(e) && byId[e.item] && (e.fields.includes(f) || e.parts.some((t) => PART[t].fields.includes(f)))).map((e) => STEP_I[stepOf(byId[e.item])]);
-    target[f] = steps.length ? Math.min(maxStep, Math.max(...steps) + 1) : 0;
-  });
-  const traits = {};
-  journal.filter(liked).forEach((e) => e.parts.forEach((t) => (traits[t] = (traits[t] || 0) + 1)));
-  Object.entries(profile?.traits || {}).forEach(([t, v]) => (traits[t] = (traits[t] || 0) + v / 2));
-  const L = profile?.limits;
-  const ranked = OPPORTUNITIES.filter((o) => !tried.has(o.id) && !saved.has(o.id) && fitsLimits(o, L)).map((o) => {
+  const target = Object.fromEntries(dirs.map((f) => { const d = doneIn(f)[0]; return [f, d ? Math.min(maxStep, STEP_I[stepOf(d)] + 1) : 0]; }));
+  const traits = profile?.traits || {};
+  const ranked = OPPORTUNITIES.filter((o) => !saved.has(o.id) && fitsLimits(o, profile?.limits)).map((o) => {
     const fs = o.niches.filter((f) => dirs.includes(f)).sort((a, b) => s[b] - s[a]);
     if (!fs.length) return null;
     const f = fs[0], gap = STEP_I[stepOf(o)] - target[f];
     let sc = s[f] + (gap === 0 ? 5 : gap === 1 ? 2 : gap < 0 ? -1 : -3 * gap);
-    PARTS.forEach((p) => { if (traits[p.key] && p.types?.includes(o.type)) sc += traits[p.key]; });
+    Object.entries(TRAIT_TYPES).forEach(([t, types]) => { if (traits[t] && types.includes(o.type)) sc += traits[t]; });
     const nd = nextDate(o);
     if (nd && daysUntil(nd.date) <= 60) sc += 1;
     if (openTo9(o)) sc += 0.5;
@@ -682,39 +616,34 @@ function viewHome() {
     <section class="hero">
       <div class="hero-text">
         <h1>Find your way into STEM <em>outside of school.</em></h1>
-        <p class="lede">Figure out what you actually like, then find real things to try. ${OPPORTUNITIES.length} internships, programs, competitions, clubs, volunteer roles, courses and certifications for high schoolers in IPSD 204, around Illinois and across the U.S., each one checked on its official site.</p>
+        <p class="lede">${OPPORTUNITIES.length} internships, programs, competitions, clubs, volunteer roles, courses and certifications for high schoolers in IPSD 204 and beyond. Each one is checked on its official site.</p>
         <form class="big-search" id="home-search" role="search">
           ${ICON.search}<input id="home-q" type="search" placeholder="robotics, hospital, NASA, Python…" aria-label="Search all listings" autocomplete="off" />
           <button class="btn primary" type="submit">Search</button>
         </form>
-        <p class="hero-quick">Not sure what you like? <a href="#/quiz">Take the quiz</a> or start with something <a href="#/all?step=try">you can try in 30 minutes</a>.</p>
+        <p class="hero-quick">Start with <a href="#/all?fresh=1">open to 9th graders</a>, <a href="#/all?cost=free">free</a>, <a href="#/all?where=local">near Naperville</a> or <a href="#/clubs?wv=1">clubs at WV</a>.</p>
       </div>
       <div class="hero-art">${DOODLES}<span class="note mono">last checked ${esc(fmt(CHECKED, { month: "short", day: "numeric" }))}</span></div>
     </section>
 
     ${dirs.length ? `<section class="path">
-      <div class="sec-head"><h2>Your path so far</h2><span><a class="link" href="#/journal">Journal (${journal.length})</a> · <a class="link" href="#/dashboard">Dashboard</a></span></div>
+      <div class="sec-head"><h2>Your path so far</h2><a class="link" href="#/dashboard">My dashboard</a></div>
       <p class="path-dirs">Your directions: ${dirs.map((f) => `<a href="#/fields/${f}">${esc(NICHES[f].label)}</a>`).join(", ")}.</p>
       ${sug.length ? `<div class="sugs">${sug.map(sugRow).join("")}</div>` : ""}
     </section>` : `<section class="how">
-      <h2 class="sr">How it works</h2>
-      <ol class="how-steps">
-        <li><span class="how-n">1</span><b>Take the quiz</b><p>Questions about what you actually do for fun. You get 2–4 directions to start with.</p><a class="link" href="#/quiz">Start the quiz</a></li>
-        <li><span class="how-n">2</span><b>Try something small</b><p>Every field has a ladder, from 30-minute starts up to summer programs.</p><a class="link" href="#/all?step=try">30-minute starts</a></li>
-        <li><span class="how-n">3</span><b>Check in</b><p>Log how it went in 20 seconds. Did you like it? Which part?</p><a class="link" href="#/checkin">Log something</a></li>
-        <li><span class="how-n">4</span><b>Narrow it down</b><p>Your journal spots patterns and suggests the next step up.</p><a class="link" href="#/journal">See the journal</a></li>
-      </ol>
+      <a class="how-quiz" href="#/quiz"><b>Take the quiz</b><span>Answer a few questions and get 2–4 fields to start with.</span>${ICON.right}</a>
     </section>`}
 
     <section class="today">
-      <div class="sec-head"><h2>Did you know?</h2><span class="mono muted">${esc(new Date().toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" }))} · a new fact each day</span></div>
+      <div class="sec-head"><h2>Did you know?</h2><span class="mono muted">${esc(new Date().toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" }))}</span></div>
       ${factSlot(FIELD_KEYS, start)}
     </section>
 
     <div class="home-cols">
       <section>
         <div class="sec-head"><h2>By type</h2><a class="link" href="#/all">See all ${OPPORTUNITIES.length}</a></div>
-        <ol class="toc">${CATS.map((c) => `<li><a href="#/${c.slug}"><span class="toc-name">${esc(c.tab)}</span><i class="leader"></i><span class="mono">${count((o) => c.types.includes(o.type))}</span></a><small>${esc(c.blurb)}</small></li>`).join("")}</ol>
+        <ol class="toc">${CATS.map((c) => `<li><a href="#/${c.slug}"><span class="toc-name">${esc(c.tab)}</span><i class="leader"></i><span class="mono">${count((o) => c.types.includes(o.type))}</span></a><small>${esc(c.blurb)}</small></li>`).join("")}
+          <li><a href="#/clubs?wv=1"><span class="toc-name">Clubs at WV</span><i class="leader"></i><span class="mono">${WV_CLUBS.length}</span></a><small>STEM clubs at Waubonsie Valley, from Mosaic.</small></li></ol>
       </section>
       <section>
         <div class="sec-head"><h2>By field</h2><a class="link" href="#/fields">All fields</a></div>
@@ -791,6 +720,7 @@ function viewField(key) {
         <a href="#f-ladder" data-jump="f-ladder">Try it</a>
         ${crosses.length ? `<a href="#f-cross" data-jump="f-cross">Crossovers</a>` : ""}
         <a href="#f-teens" data-jump="f-teens">Real teens</a>
+        ${WV_CLUBS.some((o) => o.niches.includes(key)) ? `<a href="#f-wv" data-jump="f-wv">At WV</a>` : ""}
         <a href="#f-all" data-jump="f-all">Everything <span class="mono">${items.length}</span></a>
       </nav>
     </header>
@@ -798,7 +728,7 @@ function viewField(key) {
 
     <section class="group" id="f-work">
       <h2>What the work looks like</h2>
-      <p class="sec-note">Real jobs in ${esc(n.label.toLowerCase())} and a few things people in them do. From O*NET, the U.S. Department of Labor's career database.</p>
+      <p class="sec-note">From O*NET, the U.S. Department of Labor.</p>
       <div class="jobs">${X.careers.map((c) => jobCard(EX.CAREERS[c])).join("")}</div>
       <h3 class="sub-h">Smaller areas inside ${esc(n.label)}</h3>
       <ul class="subs">${X.subs.map((s) => `<li><b>${esc(s.name)}</b><span>${esc(s.blurb)}</span>${s.topic ? `<a class="link" href="${EX.SOURCES.topic}${s.topic}" target="_blank" rel="noopener">Read about it ${ICON.ext}</a>` : ""}</li>`).join("")}</ul>
@@ -806,7 +736,6 @@ function viewField(key) {
 
     <section class="group" id="f-ladder">
       <h2>Try it, one step at a time</h2>
-      <p class="sec-note">Start small. If you like it, go one step up. After each one, <a class="link" href="#/journal">log how it went</a>.</p>
       <ol class="ladder">${ladder.map(([s, list], i) => `<li class="rung">
         <div class="rung-head"><span class="rung-n mono">${i + 1}</span><b>${s.label}</b><small>${s.hint}</small></div>
         ${list.length ? `<div class="mini-list">${list.slice(0, 3).map(miniRow).join("")}</div>${list.length > 3 ? `<a class="link rung-more" href="#/all?field=${key}&step=${s.key}">See all ${list.length}</a>` : ""}` : `<p class="muted rung-none">Nothing listed for this step yet. Try the next one.</p>`}
@@ -815,15 +744,20 @@ function viewField(key) {
 
     ${crosses.length ? `<section class="group" id="f-cross">
       <h2>Where ${esc(n.label)} crosses over</h2>
-      <p class="sec-note">Mixing two fields is often where a niche shows up.</p>
       <div class="crosses">${crosses.map(crossCard).join("")}</div>
     </section>` : ""}
 
     <section class="group" id="f-teens">
       <h2>Real teens doing ${esc(n.label)}</h2>
-      <p class="sec-note">High schoolers' research projects, as reported by Science News Explores.</p>
+      <p class="sec-note">From Science News Explores.</p>
       <div class="stories">${X.stories.map((s) => storyCard(EX.STORIES[s])).join("")}</div>
     </section>
+
+    ${WV_CLUBS.some((o) => o.niches.includes(key)) ? `<section class="group" id="f-wv">
+      <h2>Clubs at Waubonsie Valley</h2>
+      <p class="sec-note">From <a class="link" href="https://mosaic-204.vercel.app/" target="_blank" rel="noopener">Mosaic</a>.</p>
+      <div class="mini-list wv-list">${WV_CLUBS.filter((o) => o.niches.includes(key)).map(miniRow).join("")}</div>
+    </section>` : ""}
 
     <section class="group" id="f-all">
       <h2>Everything in ${esc(n.label)} <span class="mono muted">${items.length}</span></h2>
@@ -882,7 +816,7 @@ const QUIZ = [
     { t: "Weather, climate and disasters", why: "you watch videos about weather and disasters", w: { env: 3, space: 1 } },
     { t: "None of these", w: {} },
   ] },
-  { key: "class", multi: true, q: "Which school units did you actually like?", hint: "Any class, any year. Pick as many as you want.", options: [
+  { key: "class", multi: true, q: "Which school units did you actually like?", hint: "Pick as many as you want.", options: [
     { t: "Cells, DNA and genetics", why: "you liked learning about cells and DNA", w: { bio: 3, med: 1 } },
     { t: "The human body", why: "you liked the human body unit", w: { med: 3, bio: 1 } },
     { t: "Ecology and the environment", why: "you liked the ecology unit", w: { env: 3, bio: 1 } },
@@ -914,14 +848,14 @@ const QUIZ = [
     { t: "On my own, thinking hard", traits: ["puzzles", "research"] },
     { t: "Competing against others", traits: ["competing"] },
   ] },
-  { key: "limits", limits: true, q: "A few practical things", hint: "So suggestions are things you can actually do." },
+  { key: "limits", limits: true, q: "A few practical things", hint: "" },
 ];
 const LIMITS = [
   { key: "grade", label: "Your grade", options: [[9, "9th"], [10, "10th"], [11, "11th"], [12, "12th"]] },
   { key: "where", label: "How far can you go?", options: [["near", "Near Naperville, or online"], ["il", "Anywhere in Illinois"], ["us", "Anywhere in the U.S."], ["online", "Online only"]] },
   { key: "budget", label: "Budget", options: [["free", "Free only"], ["low", "Low cost or financial aid is OK"], ["any", "Cost isn't a problem"]] },
   { key: "time", label: "Free time right now", options: [["little", "An hour or two a week"], ["some", "A few hours a week"], ["lots", "A lot, or I'm planning my summer"]] },
-  { key: "girls", optional: true, label: "Include programs just for girls and gender-expansive students?", note: "Optional. They're always in the full list either way.", options: [["yes", "Yes"], ["no", "No"]] },
+  { key: "girls", optional: true, label: "Include programs just for girls and gender-expansive students?", note: "Optional.", options: [["yes", "Yes"], ["no", "No"]] },
 ];
 let qStep = 0, qAns = {};
 function buildProfile() {
@@ -943,7 +877,7 @@ function viewQuiz() {
     <div class="crumbs mono"><a href="#/">Home</a> / Quiz · ${qStep + 1} of ${QUIZ.length}</div>
     ${qStep === 0 && profile ? `<p class="quiz-note">You took this on ${esc(fmt(profile.at, { month: "short", day: "numeric" }))}. <a class="link" href="#/quiz/results">See your directions</a>, or retake it below.</p>` : ""}
     <h1>${esc(s.q)}</h1>
-    <p class="lede">${esc(s.hint)}</p>
+    ${s.hint ? `<p class="lede">${esc(s.hint)}</p>` : ""}
     ${s.limits ? LIMITS.map((g) => `<fieldset class="limit"><legend>${esc(g.label)}</legend>${g.note ? `<p class="muted limit-note">${esc(g.note)}</p>` : ""}
         <div class="choices">${g.options.map(([v, t]) => choice(`data-l="${g.key}" data-v="${v}"`, L[g.key] == v, t)).join("")}</div>
       </fieldset>`).join("")
@@ -990,7 +924,6 @@ function viewQuizResults() {
     <header class="page-head">
       <div class="crumbs mono"><a href="#/">Home</a> / Quiz results</div>
       <h1>Your starting directions</h1>
-      <p class="lede">These are places to start, not final answers. Try one small thing from each, then <a class="link" href="#/journal">log how it went</a>. Your directions shift as you go.</p>
       <p class="mono muted" style="margin-top:12px">${esc(lim)} · <a class="link" href="#/quiz">Retake quiz</a></p>
     </header>
     ${dirs.length ? `<div class="dirs">${dirs.map((f, i) => {
@@ -1004,113 +937,12 @@ function viewQuizResults() {
         ${list.length ? `<div class="mini-list">${starts(list).map(miniRow).join("")}</div>` : `<p class="muted">Nothing fits all your limits yet.</p>`}
         <p class="dir-links"><a class="link" href="#/fields/${f}">What the work is like, real teens and the full ladder</a>${list.length > 3 ? ` · <a class="link" href="#/all?field=${f}&fits=1">All ${list.length} that fit you</a>` : ""}</p>
       </article>`;
-    }).join("")}</div>` : `<div class="empty"><b>No clear direction yet.</b>That's fine. Try a few <a class="link" href="#/all?step=try">30-minute starts</a> in different fields and log how they go.</div>`}
-    ${cross.length ? `<section class="group"><h2>Where your directions overlap</h2><p class="sec-note">A mix of two fields can be a niche of its own.</p>
+    }).join("")}</div>` : `<div class="empty"><b>No clear direction yet.</b>Try a few <a class="link" href="#/all?step=try">30-minute starts</a> in different fields and log how they go.</div>`}
+    ${cross.length ? `<section class="group"><h2>Where your directions overlap</h2>
       <div class="crosses">${cross.map((c) => `<article class="cross"><div class="mono muted">${c.fields.map((f) => esc(NICHES[f].label)).join(" + ")}</div><h3>${esc(c.name)}</h3><p>${esc(c.blurb)}</p>
         <p class="cross-links"><a class="link" href="${esc(EX.CAREERS[c.career].url)}" target="_blank" rel="noopener">The job: ${esc(EX.CAREERS[c.career].title)} ${ICON.ext}</a></p></article>`).join("")}</div></section>` : ""}
     <div class="quiz-end"><a class="btn primary" href="#/dashboard">Go to my dashboard</a><a class="btn" href="#/all?fits=1">Everything that fits me</a></div>
   </div>`;
-}
-
-/* ---------- check-in: 20 seconds after trying something ---------- */
-function viewCheckin(id) {
-  const o = byId[id];
-  const A = { enjoy: 0, energy: "", more: "", parts: [], dislikes: [], fields: o ? [...o.niches] : [] };
-  const group = (key, label, opts, multi) => `<fieldset class="ci-group" data-g="${key}"><legend>${label}</legend>
-    <div class="ci-opts ${multi ? "multi" : ""}">${opts.map(([v, t]) => `<button type="button" class="tick" data-k="${key}" data-v="${v}" aria-pressed="false"><span class="box" aria-hidden="true"></span>${esc(t)}</button>`).join("")}</div></fieldset>`;
-  app.innerHTML = `<div class="container"><div class="checkin">
-    <div class="crumbs mono"><a href="#/">Home</a> / <a href="#/journal">Journal</a> / Check-in</div>
-    <h1>${o ? `How did it go?` : "Log something you tried"}</h1>
-    ${o ? `<p class="ci-item">${esc(o.name)}<span class="muted">${esc(o.org)}</span></p>` : `<p class="lede">It doesn't have to be on this site. A class project, a tutorial or a workshop all count.</p>`}
-    <form id="ci" novalidate>
-      ${o ? "" : `<label class="ci-text">What did you try?<input id="ci-title" maxlength="80" autocomplete="off" placeholder="A YouTube tutorial, a class project, a workshop…" /></label>
-        ${group("fields", "Which fields was it in?", Object.entries(NICHES).map(([k, n]) => [k, n.label]), true)}`}
-      ${group("enjoy", "How was it?", [[3, ENJOY[3]], [2, ENJOY[2]], [1, ENJOY[1]]])}
-      ${group("parts", "Which parts did you like?", PARTS.map((p) => [p.key, p.label]), true)}
-      ${group("dislikes", "Any parts you didn't like? <span class='muted'>(optional)</span>", PARTS.map((p) => [p.key, p.label]), true)}
-      ${group("energy", "Afterward, you felt…", Object.entries(ENERGY))}
-      ${group("more", "Would you do more of this?", [["yes", "Yes"], ["maybe", "Maybe"], ["no", "No"]])}
-      <label class="ci-text">Anything to remember? <span class="muted">(optional)</span><textarea id="ci-note" maxlength="400" rows="3"></textarea></label>
-      <div class="ci-actions"><button class="btn primary" type="submit" id="ci-save" disabled>Save check-in</button><button class="btn" type="button" id="ci-cancel">Cancel</button><span class="mono muted" id="ci-need"></span></div>
-    </form>
-  </div></div>`;
-  const title = () => (o ? o.name : document.getElementById("ci-title").value.trim());
-  const check = () => {
-    const need = [!o && !title() && "what you tried", !o && !A.fields.length && "a field", !A.enjoy && "how it was", !A.energy && "how you felt", !A.more && "whether you'd do more"].filter(Boolean);
-    document.getElementById("ci-save").disabled = need.length > 0;
-    document.getElementById("ci-need").textContent = need.length ? `Still need: ${need.join(", ")}` : "";
-  };
-  app.querySelectorAll(".tick").forEach((b) => {
-    const { k, v } = b.dataset;
-    if (Array.isArray(A[k]) && A[k].includes(v)) b.setAttribute("aria-pressed", "true");
-    b.addEventListener("click", () => {
-      if (Array.isArray(A[k])) {
-        A[k] = A[k].includes(v) ? A[k].filter((x) => x !== v) : [...A[k], v];
-        b.setAttribute("aria-pressed", A[k].includes(v));
-      } else {
-        A[k] = k === "enjoy" ? +v : v;
-        app.querySelectorAll(`.tick[data-k="${k}"]`).forEach((x) => x.setAttribute("aria-pressed", x === b));
-      }
-      check();
-    });
-  });
-  document.getElementById("ci-title")?.addEventListener("input", check);
-  document.getElementById("ci-cancel").addEventListener("click", () => history.back());
-  check();
-  document.getElementById("ci").addEventListener("submit", (e) => {
-    e.preventDefault();
-    if (document.getElementById("ci-save").disabled) return;
-    journal.push({ id: Date.now().toString(36), item: o?.id || null, title: title(), fields: A.fields, date: todayISO(), enjoy: A.enjoy, parts: A.parts, dislikes: A.dislikes, energy: A.energy, more: A.more, note: document.getElementById("ci-note").value.trim() });
-    saveJournal();
-    if (o && saved.has(o.id)) { status[o.id] = "done"; persist(); }
-    toast("Saved to your journal");
-    location.hash = "#/journal";
-  });
-}
-
-/* ---------- journal ---------- */
-function viewJournal() {
-  const dirs = directions(), pats = patterns(), s = fieldScores();
-  const entries = [...journal].sort((a, b) => b.date.localeCompare(a.date) || b.id.localeCompare(a.id));
-  const trend = (f) => { const d = s[f] - (profile?.scores?.[f] || 0); return d > 0 ? "up from check-ins" : d < 0 ? "down from check-ins" : "from the quiz"; };
-  const parts = (list) => list.map((t) => PART[t]?.label.toLowerCase()).filter(Boolean).join(", ");
-  app.innerHTML = `<div class="container">
-    <header class="page-head">
-      <div class="crumbs mono"><a href="#/">Home</a> / Journal</div>
-      <h1>My journal</h1>
-      <p class="lede">After you try something, log how it went. After a couple of check-ins, patterns show up here and your suggestions change. Saved on this device only.</p>
-      <div style="margin-top:18px"><a class="btn primary" href="#/checkin">Log something you tried</a></div>
-    </header>
-    <div class="journal-grid">
-      <section>
-        <div class="sec-head"><h2>Check-ins</h2><span class="mono muted">${entries.length}</span></div>
-        ${entries.length ? `<ol class="entries">${entries.map((e) => `<li class="entry">
-          <time class="entry-date mono" datetime="${e.date}">${esc(fmt(e.date, { month: "short", day: "numeric" }))}</time>
-          <div class="entry-main">
-            ${byId[e.item] ? `<b class="entry-title" data-open="${e.item}" role="button" tabindex="0">${esc(e.title)}</b>` : `<b class="entry-title">${esc(e.title)}</b>`}
-            <div class="entry-meta"><span class="e-${e.enjoy}">${ENJOY[e.enjoy]}</span> · ${ENERGY[e.energy]} · ${MORE[e.more]}</div>
-            ${e.parts.length ? `<div class="entry-sub">Liked: ${esc(parts(e.parts))}</div>` : ""}
-            ${e.dislikes?.length ? `<div class="entry-sub">Didn't like: ${esc(parts(e.dislikes))}</div>` : ""}
-            ${e.note ? `<p class="entry-note">${esc(e.note)}</p>` : ""}
-            <div class="entry-fields mono">${e.fields.map((f) => esc(NICHES[f]?.label || "")).join(" · ")}</div>
-          </div>
-          <button class="icon-btn" data-del="${e.id}" aria-label="Delete this check-in" title="Delete">${ICON.close}</button>
-        </li>`).join("")}</ol>` : `<div class="empty"><b>No check-ins yet.</b>Pick something from the <a class="link" href="#/all?step=try">30-minute list</a>, try it, then come back and log it.</div>`}
-      </section>
-      <aside>
-        <div class="sec-head"><h2>What we're noticing</h2></div>
-        ${pats.length ? `<ul class="patterns">${pats.map((p) => `<li>${esc(p)}</li>`).join("")}</ul>` : `<p class="muted">${journal.length ? "One more check-in and patterns start to show up here." : "Patterns show up here after a couple of check-ins."}</p>`}
-        <div class="sec-head" style="margin-top:36px"><h2>Your directions now</h2>${profile ? `<a class="link" href="#/quiz/results">Quiz results</a>` : ""}</div>
-        ${dirs.length ? `<ol class="toc">${dirs.map((f) => `<li><a href="#/fields/${f}"><span class="toc-name">${esc(NICHES[f].label)}</span><i class="leader"></i><span class="mono">${trend(f)}</span></a><small>${esc(reasonFor(f))}</small></li>`).join("")}</ol>`
-          : `<p class="muted">Take the <a class="link" href="#/quiz">quiz</a> or log a check-in to get directions.</p>`}
-      </aside>
-    </div>
-  </div>`;
-  app.querySelectorAll("[data-del]").forEach((b) => b.addEventListener("click", () => {
-    if (!confirm("Delete this check-in?")) return;
-    journal = journal.filter((e) => e.id !== b.dataset.del);
-    saveJournal(); toast("Check-in deleted"); viewJournal();
-  }));
 }
 
 /* ---------- dashboard ---------- */
@@ -1123,22 +955,19 @@ function viewDashboard(qs) {
   const events = upcomingOf(all);
   const myFields = [...new Set(all.flatMap((o) => o.niches))];
   const dirs = directions(), sug = suggestions(4);
-  const toLog = all.filter((o) => status[o.id] === "done" && !journal.some((e) => e.item === o.id));
   const statusSelect = (o) => `<select class="status-select" data-status="${o.id}" aria-label="Status for ${esc(o.name)}">${STATUSES.map(([k, l]) => `<option value="${k}" ${status[o.id] === k ? "selected" : ""}>${l}</option>`).join("")}</select>`;
   app.innerHTML = `<div class="container">
     <header class="page-head">
       <div class="crumbs mono"><a href="#/">Home</a> / My dashboard</div>
       <h1>My dashboard</h1>
-      <p class="lede">What you saved, your dates and what to try next. Saved on this device only.</p>
+      <p class="lede">Saved on this device only.</p>
     </header>
 
-    ${toLog.length ? `<p class="nudge">You marked ${toLog.slice(0, 2).map((o) => `<b>${esc(o.name)}</b>`).join(" and ")}${toLog.length > 2 ? ` and ${toLog.length - 2} more` : ""} done. <a class="link" href="#/checkin/${toLog[0].id}">How did it go?</a></p>` : ""}
-
     <section class="next">
-      <div class="sec-head"><h2>Next for you</h2><span>${dirs.length ? `<span class="muted">Directions: ${dirs.map((f) => `<a class="link" href="#/fields/${f}">${esc(NICHES[f].label)}</a>`).join(", ")}</span> · ` : ""}<a class="link" href="#/journal">Journal (${journal.length})</a></span></div>
+      <div class="sec-head"><h2>Next for you</h2>${dirs.length ? `<span class="muted">Directions: ${dirs.map((f) => `<a class="link" href="#/fields/${f}">${esc(NICHES[f].label)}</a>`).join(", ")}</span>` : ""}</div>
       ${sug.length ? `<div class="sugs">${sug.map(sugRow).join("")}</div>`
         : dirs.length ? `<p class="muted">Nothing new fits your limits right now. <a class="link" href="#/quiz">Retake the quiz</a> to change them.</p>`
-        : `<div class="empty"><b>No suggestions yet.</b><a class="link" href="#/quiz">Take the quiz</a> or <a class="link" href="#/checkin">log something you tried</a>, and suggestions show up here.</div>`}
+        : `<div class="empty"><b>No suggestions yet.</b><a class="link" href="#/quiz">Take the quiz</a> to get some.</div>`}
     </section>
 
     ${all.length ? `
@@ -1162,7 +991,7 @@ function viewDashboard(qs) {
       <aside>
         <div class="sec-head"><h2>Calendar</h2>${events.length ? `<button class="btn sm" data-ics="saved">Add to my calendar</button>` : ""}</div>
         ${calendarHTML(events)}
-        <p class="mono muted cal-note">${events.length ? "The calendar file adds reminders 3 days and 1 day before each date." : "None of your saved listings have upcoming dates posted."}</p>
+        <p class="mono muted cal-note">${events.length ? "Includes reminders 3 days and 1 day before." : "None of your saved listings have upcoming dates posted."}</p>
         ${events.length ? `<div class="sec-head" style="margin-top:28px"><h2>Your next dates</h2></div><div class="dl">${events.slice(0, 6).map(({ o, d }) => dlRow(o, d)).join("")}</div>` : ""}
         <div class="sec-head" style="margin-top:32px"><h2>A fact for your fields</h2></div>
         <div class="today slim">${factSlot(myFields, dayNum())}</div>
@@ -1232,7 +1061,7 @@ function viewSuggest() {
 
 /* ---------- router ---------- */
 function route() { return location.hash.replace(/^#\/?/, "").split("?")[0].split("/"); }
-const TITLES = { all: "All listings", fields: "Fields", deadlines: "Deadlines", quiz: "Quiz", dashboard: "My dashboard", journal: "My journal", checkin: "Check-in", suggest: "Suggest a listing" };
+const TITLES = { all: "All listings", fields: "Fields", deadlines: "Deadlines", quiz: "Quiz", dashboard: "My dashboard", suggest: "Suggest a listing" };
 // Pages that use explore.json wait for it on first visit.
 function needExplore(fn) {
   if (EX) return fn();
@@ -1249,8 +1078,6 @@ function render() {
   else if (r === "fields") sub ? needExplore(() => viewField(sub)) : viewFields();
   else if (r === "deadlines") viewDeadlines(qs);
   else if (r === "quiz") sub === "results" ? needExplore(viewQuizResults) : viewQuiz();
-  else if (r === "journal") viewJournal();
-  else if (r === "checkin") viewCheckin(sub);
   else if (r === "dashboard" || r === "saved") viewDashboard(qs);
   else if (r === "suggest") viewSuggest();
   else viewHome();

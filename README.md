@@ -19,7 +19,7 @@ Then open http://localhost:5174 in your browser.
 | --- | --- |
 | `index.html` | Page shell, fonts and share-preview tags |
 | `styles.css` | All styling (the "lab notebook" look: paper, index cards, serif + mono type) |
-| `app.js` | Pages: Home, All, Fields (each with what the work is like, a try-it ladder, crossovers and real teens), one tab per type (Internships, Programs, Competitions, Clubs, Volunteering, Courses, Certifications), Deadlines, Quiz and results, Check-in, Journal, Dashboard, Suggest |
+| `app.js` | Pages: Home, All, Fields (each with what the work is like, a try-it ladder, crossovers and real teens), one tab per type (Internships, Programs, Competitions, Clubs, Volunteering, Courses, Certifications), Deadlines, Quiz and results, Dashboard, Suggest |
 | `data.json` | **The database.** One listing per line, plus the field, type, place and cost labels |
 | `explore.json` | Field pages: real jobs and their tasks (O*NET), smaller areas inside each field, crossovers, and real teen research stories (Science News Explores) |
 | `facts.json` | Daily "Did you know?" facts, about 12 per field, each linked to a Science News Explores article. Loads after the page shows |
@@ -81,7 +81,7 @@ Supabase or Firebase).
 
 ## Finding your niche
 
-The site runs a loop: **quiz → try something small → check in → narrow down.**
+The site runs a loop: **quiz → try something small → go one step up.**
 
 - **Quiz** (`QUIZ` in `app.js`). It asks what students actually do (what they lose track of
   time doing, what they watch, which school units they liked, what they'd fix), how they
@@ -92,16 +92,13 @@ The site runs a loop: **quiz → try something small → check in → narrow dow
   `weekend`, `semester` or `summer`. `stepOf()` works it out from the type, and a listing
   can set `"step"` in `data.json` to override that. The database sorts easiest-first by
   default and can filter by step.
-- **Check-ins and journal.** After trying something, a student logs whether they liked it,
-  which parts they liked or didn't, how they felt afterward and whether they'd do more.
-  `patterns()` turns these into plain sentences ("You keep liking the hands-on parts more
-  than the reading and research parts").
-- **Directions and suggestions.** `fieldScores()` adds check-ins on top of the quiz, so the
-  directions change over time. `suggestions()` picks listings that fit the student's limits,
-  one step up the ladder from the biggest thing they liked, and explains why ("You liked
-  the coding part of FIRST Robotics Competition. This is a semester step in Computer
-  Science.").
-- **Dashboard.** Saved listings with statuses, a month calendar, and an "Add to my
+- **Directions and suggestions.** `directions()` ranks fields by quiz points.
+  `suggestions()` picks listings in those directions that fit the student's limits and
+  explains why ("You lose track of time building and fixing things, so here's a 30-minute
+  start in Robotics."). When a student marks a saved listing **Done** on the dashboard,
+  suggestions in that field move one step up the ladder ("You finished Autodesk Fusion for
+  Students, so here's a weekend step in Robotics.").
+- **Dashboard.** Saved listings with statuses (Interested, Applying, Applied, Done), a month calendar, and an "Add to my
   calendar" file (.ics) that sets reminders 3 days and 1 day before each date. A red dot
   on the dashboard button means a saved listing has a date in the next 7 days.
 
@@ -121,3 +118,35 @@ show the tag, and they appear in suggestions only if the student says yes in the
   (`python3 research/build_explore.py research`).
 - **Subfield links** go to Science News Explores topic pages. Subfields with no matching
   topic page have no link.
+
+## Clubs at Waubonsie Valley
+
+18 STEM clubs at Waubonsie Valley are listings too (`"school": "wv"` in `data.json`). They
+come from Mosaic's club data (saved in `research/mosaic-wv-clubs.json`, checked
+Oct 27, 2026). Only what Mosaic says is listed: what the club does, when and where it meets,
+and whether Mosaic lists spots as open or limited. Mosaic has no page per club, so each one
+links to Mosaic's home page.
+
+Outside listings that WV already has a club for have a `"wv"` field naming that club (for
+example CyberPatriot → Cyberpatriot Team). The card and details panel say so, and the WV
+club links back with `"partOf"`. Use the **Clubs at WV** checkbox in the Clubs tab to see
+just these.
+
+## Automatic link check (every two days)
+
+`.github/workflows/check-listings.yml` runs on GitHub every other day. It visits every
+official link and posts the results in an issue called **Listings check**:
+
+- **Broken links:** pages that didn't load.
+- **Moved to a different site:** the link now goes to another website.
+- **All dates have passed:** look up next year's dates.
+- **Sites that block automatic checks:** these are usually fine.
+
+It doesn't change the site by itself. Program details have to be read on the official page,
+so you fix what it finds in `data.json` and upload the file.
+
+**Turning it on.** The `.github` folder is hidden in Finder, so add the workflow through the
+GitHub website instead: in your repo, click **Add file → Create new file**, name it
+`.github/workflows/check-listings.yml`, paste in the contents of that file, and commit. To
+run it right away, open the **Actions** tab, pick **Check listings** and click
+**Run workflow**.

@@ -1,0 +1,2238 @@
+[
+ {
+  "name": "American Sign Language Club",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "Language",
+   "Culture",
+   "Accessibility"
+  ],
+  "description": "Learn and practice American Sign Language and connect with Deaf culture.",
+  "meeting": "1st & 3rd Tuesday/month \u00b7 2:35-3:30",
+  "room": "297",
+  "days": [
+   "Tuesday"
+  ],
+  "schedule": [
+   {
+    "day": "Tuesday",
+    "weeks": [
+     1,
+     3
+    ]
+   }
+  ],
+  "scheduleNote": "",
+  "time": "2:35-3:30",
+  "leaders": [
+   "Brooke Marquette"
+  ],
+  "emails": [
+   "brooke_marquette@ipsd.org",
+   "dawn_ryan@ipsd.org",
+   "rebecca_schumacher@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "American Sign Language Honor Society",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "Language",
+   "Culture",
+   "Accessibility",
+   "Academics",
+   "Leadership",
+   "Service"
+  ],
+  "description": "Learn and practice American Sign Language and connect with Deaf culture.",
+  "meeting": "1st Monday 7 am \u00b7 7:05-7:20am",
+  "room": "297",
+  "days": [
+   "Monday"
+  ],
+  "schedule": [
+   {
+    "day": "Monday",
+    "weeks": [
+     1
+    ]
+   }
+  ],
+  "scheduleNote": "",
+  "time": "7:05-7:20am",
+  "leaders": [
+   "Brooke Marquette"
+  ],
+  "emails": [
+   "brooke_marquette@ipsd.org"
+  ],
+  "enrollment": "limited"
+ },
+ {
+  "name": "Art club",
+  "school": "waubonsie",
+  "category": "Special Interest",
+  "tags": [
+   "Arts",
+   "Creativity",
+   "Design"
+  ],
+  "description": "Make art together across drawing, painting, and mixed media.",
+  "meeting": "Tuesday \u00b7 2:30 - 3:30 2nd/4th Tuesday per month",
+  "room": "184",
+  "days": [
+   "Tuesday"
+  ],
+  "schedule": [
+   {
+    "day": "Tuesday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "2:30 - 3:30 2nd/4th Tuesday per month",
+  "leaders": [
+   "Katherine Buck"
+  ],
+  "emails": [
+   "katherine_buck@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "Aspiring Medical Professionals (AMP)",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "STEM",
+   "Medicine",
+   "Careers",
+   "Health"
+  ],
+  "description": "Explore careers in medicine and healthcare with guest speakers and hands-on activities.",
+  "meeting": "Thursday \u00b7 2:30 - 1 Time a month",
+  "room": "179",
+  "days": [
+   "Thursday"
+  ],
+  "schedule": [
+   {
+    "day": "Thursday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "2:30 - 1 Time a month",
+  "leaders": [
+   "Christopher Schramm",
+   "James Donahue"
+  ],
+  "emails": [
+   "christopher_schramm@ipsd.org",
+   "james_donahue@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "Auditorium Staff",
+  "school": "waubonsie",
+  "category": "Special Interest",
+  "tags": [
+   "Theatre",
+   "Media",
+   "Creativity",
+   "Careers"
+  ],
+  "description": "Run lighting, sound, and stage operations for auditorium events.",
+  "meeting": "Meetings are the 2nd Wednesday of each month. Plus traning sessions and signing up to work auditorium events. \u00b7 3:00 - 3:30 pm",
+  "room": "105",
+  "days": [
+   "Wednesday"
+  ],
+  "schedule": [
+   {
+    "day": "Wednesday",
+    "weeks": [
+     2
+    ]
+   }
+  ],
+  "scheduleNote": "",
+  "time": "3:00 - 3:30 pm",
+  "leaders": [
+   "Stephanie Stevens",
+   "Brandi Campbell"
+  ],
+  "emails": [
+   "stephanie_stevens@ipsd.org",
+   "brandi_campbell@ipsd.org"
+  ],
+  "enrollment": "limited"
+ },
+ {
+  "name": "Aviation Club",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "STEM",
+   "Engineering",
+   "Technology",
+   "Careers"
+  ],
+  "description": "Explore aviation, flight, and careers in aerospace.",
+  "meeting": "1 Tuesday & 1 Thursday each month \u00b7 2:30 - 4:00",
+  "room": "156/157",
+  "days": [
+   "Tuesday",
+   "Thursday"
+  ],
+  "schedule": [
+   {
+    "day": "Tuesday",
+    "weeks": [
+     1
+    ]
+   },
+   {
+    "day": "Thursday",
+    "weeks": [
+     1
+    ]
+   }
+  ],
+  "scheduleNote": "meets monthly \u2014 confirm the week with the sponsor",
+  "time": "2:30 - 4:00",
+  "leaders": [
+   "Matthew Zawlocki"
+  ],
+  "emails": [
+   "matthew_zawlocki@ipsd.org"
+  ],
+  "enrollment": "limited"
+ },
+ {
+  "name": "Best Buddies",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "Service",
+   "Inclusion",
+   "Friendship",
+   "Community"
+  ],
+  "description": "Build one-to-one friendships with peers with intellectual and developmental disabilities.",
+  "meeting": "1st Thursday of month \u00b7 2:30-3:30",
+  "room": "LMC",
+  "days": [
+   "Thursday"
+  ],
+  "schedule": [
+   {
+    "day": "Thursday",
+    "weeks": [
+     1
+    ]
+   }
+  ],
+  "scheduleNote": "",
+  "time": "2:30-3:30",
+  "leaders": [
+   "Kelly Scheffert",
+   "Elizabeth Clark"
+  ],
+  "emails": [
+   "kelly_scheffert@ipsd.org",
+   "elizabeth_clark@ipsd.org"
+  ],
+  "enrollment": "limited"
+ },
+ {
+  "name": "Biking Club",
+  "school": "waubonsie",
+  "category": "Special Interest",
+  "tags": [
+   "Recreation",
+   "Fitness",
+   "Nature",
+   "Adventure"
+  ],
+  "description": "Ride together on local trails and group cycling outings.",
+  "meeting": "Schedule TBD",
+  "room": "Door 33 and various offsite locations",
+  "days": [],
+  "schedule": [],
+  "scheduleNote": "",
+  "time": "",
+  "leaders": [
+   "Joel Brens"
+  ],
+  "emails": [
+   "joel_brens@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "Book Club",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "Reading",
+   "Literature",
+   "Discussion",
+   "Writing"
+  ],
+  "description": "Read and discuss books together in a relaxed setting.",
+  "meeting": "Every other Friday \u00b7 2:30 - 4:00",
+  "room": "LMC",
+  "days": [
+   "Friday"
+  ],
+  "schedule": [
+   {
+    "day": "Friday",
+    "weeks": [
+     1,
+     3
+    ]
+   }
+  ],
+  "scheduleNote": "alternates weeks \u2014 confirm the start week with the sponsor",
+  "time": "2:30 - 4:00",
+  "leaders": [
+   "Robyn Whitlock"
+  ],
+  "emails": [
+   "robyn_whitlock@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "BPA",
+  "school": "waubonsie",
+  "category": "Competitive",
+  "tags": [
+   "Business",
+   "Careers",
+   "Competition",
+   "Leadership"
+  ],
+  "description": "Compete in business events and build professional skills through BPA.",
+  "meeting": "Monday \u00b7 6:45-7:15 am",
+  "room": "LMC",
+  "days": [
+   "Monday"
+  ],
+  "schedule": [
+   {
+    "day": "Monday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "6:45-7:15 am",
+  "leaders": [
+   "C Skrzypchak"
+  ],
+  "emails": [
+   "c_skrzypchak@ipsd.org"
+  ],
+  "enrollment": "limited"
+ },
+ {
+  "name": "BSA",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "Culture",
+   "Leadership",
+   "Community",
+   "Equity"
+  ],
+  "description": "Build community and leadership among Black students.",
+  "meeting": "2nd Tuesday/each month \u00b7 2:45pm to 4:00pm",
+  "room": "110",
+  "days": [
+   "Tuesday"
+  ],
+  "schedule": [
+   {
+    "day": "Tuesday",
+    "weeks": [
+     2
+    ]
+   }
+  ],
+  "scheduleNote": "",
+  "time": "2:45pm to 4:00pm",
+  "leaders": [
+   "Marian Banks"
+  ],
+  "emails": [
+   "marian_banks@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "Chess Team",
+  "school": "waubonsie",
+  "category": "Competitive",
+  "tags": [
+   "Strategy",
+   "Games",
+   "Logic",
+   "Competition"
+  ],
+  "description": "Play and study chess, from casual games to team competition.",
+  "meeting": "Tuesdays/Thursdays \u00b7 2:30-4:30PM",
+  "room": "ARC",
+  "days": [
+   "Tuesday",
+   "Thursday"
+  ],
+  "schedule": [
+   {
+    "day": "Tuesday",
+    "weeks": []
+   },
+   {
+    "day": "Thursday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "2:30-4:30PM",
+  "leaders": [
+   "Mikhail Korenman",
+   "Robyn Whitlock"
+  ],
+  "emails": [
+   "mikhail_korenman@ipsd.org",
+   "robyn_whitlock@ipsd.org"
+  ],
+  "enrollment": "limited"
+ },
+ {
+  "name": "Chinese Club/Honor Society",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "Language",
+   "Culture",
+   "Academics",
+   "Leadership",
+   "Service"
+  ],
+  "description": "Celebrate Chinese language and culture with fellow students.",
+  "meeting": "Every other Thursday \u00b7 2:30-3:30",
+  "room": "293",
+  "days": [
+   "Thursday"
+  ],
+  "schedule": [
+   {
+    "day": "Thursday",
+    "weeks": [
+     1,
+     3
+    ]
+   }
+  ],
+  "scheduleNote": "alternates weeks \u2014 confirm the start week with the sponsor",
+  "time": "2:30-3:30",
+  "leaders": [
+   "Wei Liu"
+  ],
+  "emails": [
+   "wei_liu@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "Christian Student Association",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "Faith",
+   "Community",
+   "Service"
+  ],
+  "description": "Gather for fellowship, discussion, and service.",
+  "meeting": "Tuesdays \u00b7 2:30-3:15",
+  "room": "272",
+  "days": [
+   "Tuesday"
+  ],
+  "schedule": [
+   {
+    "day": "Tuesday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "2:30-3:15",
+  "leaders": [
+   "James Donahue"
+  ],
+  "emails": [
+   "james_donahue@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "Creative Writing Club",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "Writing",
+   "Creativity",
+   "Literature"
+  ],
+  "description": "Write fiction, poetry, and prose and share work with other writers.",
+  "meeting": "2:30 - 3:30",
+  "room": "184",
+  "days": [],
+  "schedule": [],
+  "scheduleNote": "",
+  "time": "2:30 - 3:30",
+  "leaders": [
+   "Katherine Buck"
+  ],
+  "emails": [
+   "katherine_buck@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "Cyberpatriot Team",
+  "school": "waubonsie",
+  "category": "Competitive",
+  "tags": [
+   "STEM",
+   "Coding",
+   "Technology",
+   "Competition"
+  ],
+  "description": "Compete in national cybersecurity challenges as a team.",
+  "meeting": "Tuesday \u00b7 2:30-3:30 pm",
+  "room": "289",
+  "days": [
+   "Tuesday"
+  ],
+  "schedule": [
+   {
+    "day": "Tuesday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "2:30-3:30 pm",
+  "leaders": [
+   "C Skrzypchak"
+  ],
+  "emails": [
+   "c_skrzypchak@ipsd.org"
+  ],
+  "enrollment": "limited"
+ },
+ {
+  "name": "Defying Disorders",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "Health",
+   "Wellness",
+   "Advocacy",
+   "Community"
+  ],
+  "description": "Raise awareness and support students facing mental health challenges.",
+  "meeting": "Every other Tuesday \u00b7 6:55-7:20AM",
+  "room": "305",
+  "days": [
+   "Tuesday"
+  ],
+  "schedule": [
+   {
+    "day": "Tuesday",
+    "weeks": [
+     1,
+     3
+    ]
+   }
+  ],
+  "scheduleNote": "alternates weeks \u2014 confirm the start week with the sponsor",
+  "time": "6:55-7:20AM",
+  "leaders": [
+   "Jacqueline Hill"
+  ],
+  "emails": [
+   "jacqueline_hill@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "Drama Club",
+  "school": "waubonsie",
+  "category": "Special Interest",
+  "tags": [
+   "Theatre",
+   "Arts",
+   "Performance",
+   "Creativity"
+  ],
+  "description": "Act, direct, and produce student theatre.",
+  "meeting": "First Tuesday of the month \u00b7 6:45-7:15am",
+  "room": "Auditorium (Room 214 unitl auditroium is reopended)",
+  "days": [
+   "Tuesday"
+  ],
+  "schedule": [
+   {
+    "day": "Tuesday",
+    "weeks": [
+     1
+    ]
+   }
+  ],
+  "scheduleNote": "",
+  "time": "6:45-7:15am",
+  "leaders": [
+   "Rebecca Dedecker"
+  ],
+  "emails": [
+   "rebecca_dedecker@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "Educators Rising",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "Education",
+   "Careers",
+   "Leadership",
+   "Service"
+  ],
+  "description": "Explore teaching as a career with classroom experience and mentorship.",
+  "meeting": "Thursday \u00b7 2:30-3:00",
+  "room": "173",
+  "days": [
+   "Thursday"
+  ],
+  "schedule": [
+   {
+    "day": "Thursday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "2:30-3:00",
+  "leaders": [
+   "Lynn Baranak",
+   "Elizabeth Gurican"
+  ],
+  "emails": [
+   "lynn_baranak@ipsd.org",
+   "elizabeth_gurican@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "Enviromental Society",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "Environment",
+   "Sustainability",
+   "Nature",
+   "Service"
+  ],
+  "description": "Lead sustainability projects and environmental awareness campaigns.",
+  "meeting": "Friday \u00b7 6:50-7:20 am",
+  "room": "271",
+  "days": [
+   "Friday"
+  ],
+  "schedule": [
+   {
+    "day": "Friday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "6:50-7:20 am",
+  "leaders": [
+   "Jim Nielsen"
+  ],
+  "emails": [
+   "jim_nielsen@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "FCCLA",
+  "school": "waubonsie",
+  "category": "Competitive",
+  "tags": [
+   "Careers",
+   "Leadership",
+   "Service",
+   "Competition"
+  ],
+  "description": "Develop family and consumer sciences skills and compete through FCCLA.",
+  "meeting": "Thursday \u00b7 2:30 - 3:00 or 3:15",
+  "room": "167",
+  "days": [
+   "Thursday"
+  ],
+  "schedule": [
+   {
+    "day": "Thursday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "2:30 - 3:00 or 3:15",
+  "leaders": [
+   "Jill Oconnell",
+   "Tracy Hartman"
+  ],
+  "emails": [
+   "jill_oconnell@ipsd.org",
+   "tracy_hartman@ipsd.org"
+  ],
+  "enrollment": "limited"
+ },
+ {
+  "name": "Fishing Club",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "Recreation",
+   "Nature",
+   "Adventure",
+   "Social"
+  ],
+  "description": "Fish local waters and learn angling techniques.",
+  "meeting": "Tuesday \u00b7 2:30-3:00",
+  "room": "",
+  "days": [
+   "Tuesday"
+  ],
+  "schedule": [
+   {
+    "day": "Tuesday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "2:30-3:00",
+  "leaders": [
+   "Ben Manzella"
+  ],
+  "emails": [
+   "ben_manzella@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "French Club",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "Language",
+   "Culture"
+  ],
+  "description": "Celebrate French language and culture.",
+  "meeting": "Every other Monday \u00b7 2:30-3:30",
+  "room": "303",
+  "days": [
+   "Monday"
+  ],
+  "schedule": [
+   {
+    "day": "Monday",
+    "weeks": [
+     1,
+     3
+    ]
+   }
+  ],
+  "scheduleNote": "alternates weeks \u2014 confirm the start week with the sponsor",
+  "time": "2:30-3:30",
+  "leaders": [
+   "Savannah Smith"
+  ],
+  "emails": [
+   "savannah_smith@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "Gamers Club",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "Games",
+   "Technology",
+   "Social",
+   "Strategy"
+  ],
+  "description": "Play video and tabletop games with other students.",
+  "meeting": "Thursday \u00b7 2:40 - 4:00 pm",
+  "room": "LMC",
+  "days": [
+   "Thursday"
+  ],
+  "schedule": [
+   {
+    "day": "Thursday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "2:40 - 4:00 pm",
+  "leaders": [
+   "Kati Ianno"
+  ],
+  "emails": [
+   "kati_ianno@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "GEMS Club",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "STEM",
+   "Engineering",
+   "Inclusion",
+   "Science"
+  ],
+  "description": "Encourage and support girls pursuing engineering, math, and science.",
+  "meeting": "Friday \u00b7 2:30-3:30pm",
+  "room": "176",
+  "days": [
+   "Friday"
+  ],
+  "schedule": [
+   {
+    "day": "Friday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "2:30-3:30pm",
+  "leaders": [
+   "Sara Young",
+   "Brianne Rimmele"
+  ],
+  "emails": [
+   "sara_young@ipsd.org",
+   "brianne_rimmele@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "German Club",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "Language",
+   "Culture"
+  ],
+  "description": "Celebrate German language and culture.",
+  "meeting": "Thursday \u00b7 2:30 - 3:30 pm",
+  "room": "296",
+  "days": [
+   "Thursday"
+  ],
+  "schedule": [
+   {
+    "day": "Thursday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "2:30 - 3:30 pm",
+  "leaders": [
+   "Elizabeth Savage"
+  ],
+  "emails": [
+   "elizabeth_savage@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "Girls Who Code",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "STEM",
+   "Coding",
+   "Technology",
+   "Inclusion"
+  ],
+  "description": "Learn programming and build projects with peers.",
+  "meeting": "Tuesday \u00b7 2:30-3:30",
+  "room": "289",
+  "days": [
+   "Tuesday"
+  ],
+  "schedule": [
+   {
+    "day": "Tuesday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "2:30-3:30",
+  "leaders": [
+   "Alice Jauch"
+  ],
+  "emails": [
+   "alice_jauch@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "GSA",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "Inclusion",
+   "Advocacy",
+   "Community"
+  ],
+  "description": "Build a welcoming space for LGBTQ+ students and allies.",
+  "meeting": "Thursday \u00b7 2:30-3:45",
+  "room": "212",
+  "days": [
+   "Thursday"
+  ],
+  "schedule": [
+   {
+    "day": "Thursday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "2:30-3:45",
+  "leaders": [
+   "Mara Porada"
+  ],
+  "emails": [
+   "mara_porada@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "Hiking Club",
+  "school": "waubonsie",
+  "category": "Special Interest",
+  "tags": [
+   "Recreation",
+   "Nature",
+   "Fitness",
+   "Adventure"
+  ],
+  "description": "Explore local trails and parks on group hikes.",
+  "meeting": "Select Thursdays and Saturdays \u00b7 Thursdays after school, Saturday mornings",
+  "room": "Various",
+  "days": [
+   "Thursday",
+   "Saturday"
+  ],
+  "schedule": [
+   {
+    "day": "Thursday",
+    "weeks": []
+   },
+   {
+    "day": "Saturday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "dates vary \u2014 confirm with the sponsor",
+  "time": "Thursdays after school, Saturday mornings",
+  "leaders": [
+   "Sara Young",
+   "Brianne Rimmele"
+  ],
+  "emails": [
+   "sara_young@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "IDEA",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "Design",
+   "Creativity",
+   "Engineering",
+   "Careers"
+  ],
+  "description": "Explore design and engineering through hands-on projects.",
+  "meeting": "Tuesday",
+  "room": "",
+  "days": [
+   "Tuesday"
+  ],
+  "schedule": [
+   {
+    "day": "Tuesday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "",
+  "leaders": [
+   "Matthew Zawlocki"
+  ],
+  "emails": [
+   "matthew_zawlocki@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "Indian Student Association (ISA)",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "Culture",
+   "Community",
+   "Service"
+  ],
+  "description": "Celebrate Indian heritage through events, festivals, and service.",
+  "meeting": "Every other Thursday \u00b7 2:30-3:15",
+  "room": "355",
+  "days": [
+   "Thursday"
+  ],
+  "schedule": [
+   {
+    "day": "Thursday",
+    "weeks": [
+     1,
+     3
+    ]
+   }
+  ],
+  "scheduleNote": "alternates weeks \u2014 confirm the start week with the sponsor",
+  "time": "2:30-3:15",
+  "leaders": [
+   "Kinjal Marfatia"
+  ],
+  "emails": [
+   "kinjal_marfatia@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "Innovators",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "STEM",
+   "Engineering",
+   "Design",
+   "Creativity",
+   "Technology"
+  ],
+  "description": "Prototype and build original inventions and design projects.",
+  "meeting": "Tuesday \u00b7 2:30 - 3:30 pm",
+  "room": "260",
+  "days": [
+   "Tuesday"
+  ],
+  "schedule": [
+   {
+    "day": "Tuesday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "2:30 - 3:30 pm",
+  "leaders": [
+   "Stephanie Rybka"
+  ],
+  "emails": [
+   "stephanie_rybka@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "Key Club",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "Service",
+   "Leadership",
+   "Community"
+  ],
+  "description": "Serve the community through Kiwanis-sponsored volunteer projects.",
+  "meeting": "Thursday \u00b7 6:55 AM",
+  "room": "Room 111-113 (or 156)",
+  "days": [
+   "Thursday"
+  ],
+  "schedule": [
+   {
+    "day": "Thursday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "6:55 AM",
+  "leaders": [
+   "Andrew Krueger",
+   "Jacqueline Hill"
+  ],
+  "emails": [
+   "andrew_krueger@ipsd.org",
+   "jacqueline_hill@ipsd.org"
+  ],
+  "enrollment": "limited"
+ },
+ {
+  "name": "Literary Magazine",
+  "school": "waubonsie",
+  "category": "Special Interest",
+  "tags": [
+   "Writing",
+   "Publishing",
+   "Creativity",
+   "Arts",
+   "Literature"
+  ],
+  "description": "Publish student writing and artwork in the school literary magazine.",
+  "meeting": "Monday \u00b7 2:30 - 3:30",
+  "room": "184",
+  "days": [
+   "Monday"
+  ],
+  "schedule": [
+   {
+    "day": "Monday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "2:30 - 3:30",
+  "leaders": [
+   "Katherine Buck"
+  ],
+  "emails": [
+   "katherine_buck@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "Marching Warriors",
+  "school": "waubonsie",
+  "category": "Competitive",
+  "tags": [
+   "Music",
+   "Performance",
+   "School Spirit",
+   "Team"
+  ],
+  "description": "Perform at football games and marching band competitions.",
+  "meeting": "Monday \u00b7 M, Tu, Th, F: 2:50-5:00 p.m.",
+  "room": "Band or practice field",
+  "days": [
+   "Monday"
+  ],
+  "schedule": [
+   {
+    "day": "Monday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "M, Tu, Th, F: 2:50-5:00 p.m.",
+  "leaders": [
+   "James Hairston"
+  ],
+  "emails": [
+   "james_hairston@ipsd.org"
+  ],
+  "enrollment": "limited"
+ },
+ {
+  "name": "Math Team",
+  "school": "waubonsie",
+  "category": "Competitive",
+  "tags": [
+   "Mathematics",
+   "STEM",
+   "Competition",
+   "Academics"
+  ],
+  "description": "Compete in math contests and solve challenging problems.",
+  "meeting": "Monday & Thursday \u00b7 M: 2:30\u20133:15 pm Th: 6:45 am",
+  "room": "353",
+  "days": [
+   "Monday",
+   "Thursday"
+  ],
+  "schedule": [
+   {
+    "day": "Monday",
+    "weeks": []
+   },
+   {
+    "day": "Thursday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "M: 2:30\u20133:15 pm Th: 6:45 am",
+  "leaders": [
+   "Stephen Spinelli",
+   "Paige Allen"
+  ],
+  "emails": [
+   "stephen_spinelli@ipsd.org",
+   "paige_allen@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "Model UN",
+  "school": "waubonsie",
+  "category": "Competitive",
+  "tags": [
+   "Debate",
+   "Public Speaking",
+   "Global Issues",
+   "Politics"
+  ],
+  "description": "Represent nations in Model United Nations conferences.",
+  "meeting": "Friday \u00b7 2:45 pm - 4:00 PM",
+  "room": "111/113",
+  "days": [
+   "Friday"
+  ],
+  "schedule": [
+   {
+    "day": "Friday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "2:45 pm - 4:00 PM",
+  "leaders": [
+   "Stephanie Stevens",
+   "David John"
+  ],
+  "emails": [
+   "stephanie_stevens@ipsd.org",
+   "david_john@ipsd.org"
+  ],
+  "enrollment": "limited"
+ },
+ {
+  "name": "Mosaic Choir",
+  "school": "waubonsie",
+  "category": "Special Interest",
+  "tags": [
+   "Music",
+   "Performance",
+   "Arts"
+  ],
+  "description": "Sing in a student vocal ensemble.",
+  "meeting": "Wednesday \u00b7 3:05-4:30 PM",
+  "room": "121",
+  "days": [
+   "Wednesday"
+  ],
+  "schedule": [
+   {
+    "day": "Wednesday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "3:05-4:30 PM",
+  "leaders": [
+   "Chelsea King"
+  ],
+  "emails": [
+   "chelsea_king@ipsd.org"
+  ],
+  "enrollment": "limited"
+ },
+ {
+  "name": "Muslim Student Association (MSA)",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "Culture",
+   "Religion",
+   "Community"
+  ],
+  "description": "Build community and celebrate Islamic culture.",
+  "meeting": "Friday \u00b7 2:30-3:30",
+  "room": "LMC until 10/31, then 156",
+  "days": [
+   "Friday"
+  ],
+  "schedule": [
+   {
+    "day": "Friday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "2:30-3:30",
+  "leaders": [
+   "Makaela Chavez"
+  ],
+  "emails": [
+   "makaela_chavez@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "Orchesis Dance Company",
+  "school": "waubonsie",
+  "category": "Competitive",
+  "tags": [
+   "Performance",
+   "Arts",
+   "Fitness",
+   "Team"
+  ],
+  "description": "Choreograph and perform in the student dance company.",
+  "meeting": "Tuesday and Thursday \u00b7 Tuesdays 3:00-6:00 and Thursday 3:00-6:00",
+  "room": "Dance Gym",
+  "days": [
+   "Tuesday",
+   "Thursday"
+  ],
+  "schedule": [
+   {
+    "day": "Tuesday",
+    "weeks": []
+   },
+   {
+    "day": "Thursday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "Tuesdays 3:00-6:00 and Thursday 3:00-6:00",
+  "leaders": [
+   "Sydney Stevens",
+   "Mayra Hernandez"
+  ],
+  "emails": [
+   "sydney_stevens@ipsd.org",
+   "mayra_hernandez@ipsd.org"
+  ],
+  "enrollment": "limited"
+ },
+ {
+  "name": "Organization of Latin American Students (OLAS)",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "Culture",
+   "Community",
+   "Language"
+  ],
+  "description": "Celebrate Latin American heritage and build community.",
+  "meeting": "Tuesdays- see Google classroom (code jkl3mmaq) \u00b7 2:30-3:30",
+  "room": "110 or 111/113 Check Google Classroom",
+  "days": [
+   "Tuesday"
+  ],
+  "schedule": [
+   {
+    "day": "Tuesday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "2:30-3:30",
+  "leaders": [
+   "Elise Reible"
+  ],
+  "emails": [
+   "elise_reible@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "Pickleball",
+  "school": "waubonsie",
+  "category": "Special Interest",
+  "tags": [
+   "Sports",
+   "Fitness",
+   "Recreation",
+   "Team"
+  ],
+  "description": "Play pickleball in casual and competitive matches.",
+  "meeting": "Schedule TBD",
+  "room": "Tennis Courts",
+  "days": [],
+  "schedule": [],
+  "scheduleNote": "",
+  "time": "",
+  "leaders": [
+   "Darlene Villalobos"
+  ],
+  "emails": [
+   "darlene_villalobos@ipsd.org"
+  ],
+  "enrollment": "limited"
+ },
+ {
+  "name": "Powder Puff",
+  "school": "waubonsie",
+  "category": "Special Interest",
+  "tags": [
+   "Sports",
+   "Fitness",
+   "Team",
+   "School Spirit"
+  ],
+  "description": "Compete in the annual powder puff football tournament.",
+  "meeting": "Fall 2025 \u00b7 2:45-3:30",
+  "room": "Back field behind Staff parking lot",
+  "days": [],
+  "schedule": [],
+  "scheduleNote": "",
+  "time": "2:45-3:30",
+  "leaders": [
+   "Karen Kuhlman",
+   "Kelly Zielie",
+   "Joel Brens"
+  ],
+  "emails": [
+   "karen_kuhlman@ipsd.org"
+  ],
+  "enrollment": "limited"
+ },
+ {
+  "name": "Red Cross Club",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "Service",
+   "Health",
+   "Global Issues"
+  ],
+  "description": "Run blood drives and support Red Cross humanitarian work.",
+  "meeting": "Tuesday \u00b7 6:50 am",
+  "room": "111",
+  "days": [
+   "Tuesday"
+  ],
+  "schedule": [
+   {
+    "day": "Tuesday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "6:50 am",
+  "leaders": [
+   "Rebecca Goff"
+  ],
+  "emails": [
+   "rebecca_goff@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "Robotics",
+  "school": "waubonsie",
+  "category": "Competitive",
+  "tags": [
+   "Robotics",
+   "STEM",
+   "Engineering",
+   "Technology",
+   "Competition"
+  ],
+  "description": "Design, build, and compete with student-built robots.",
+  "meeting": "Monday & Thursday \u00b7 2:35 PM",
+  "room": "172",
+  "days": [
+   "Monday",
+   "Thursday"
+  ],
+  "schedule": [
+   {
+    "day": "Monday",
+    "weeks": []
+   },
+   {
+    "day": "Thursday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "2:35 PM",
+  "leaders": [
+   "Steve Meyer",
+   "John Alaniz"
+  ],
+  "emails": [
+   "steve_meyer@ipsd.org",
+   "john_alaniz@ipsd.org"
+  ],
+  "enrollment": "limited"
+ },
+ {
+  "name": "Rocketry",
+  "school": "waubonsie",
+  "category": "Competitive",
+  "tags": [
+   "STEM",
+   "Engineering",
+   "Science",
+   "Space",
+   "Competition"
+  ],
+  "description": "Design, build, and launch model rockets in team competition.",
+  "meeting": "Mondays \u00b7 2:40-5",
+  "room": "273",
+  "days": [
+   "Monday"
+  ],
+  "schedule": [
+   {
+    "day": "Monday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "2:40-5",
+  "leaders": [
+   "Ryan Jacobs"
+  ],
+  "emails": [
+   "ryan_jacobs@ipsd.org"
+  ],
+  "enrollment": "limited"
+ },
+ {
+  "name": "Scholastic Bowl",
+  "school": "waubonsie",
+  "category": "Competitive",
+  "tags": [
+   "Culture",
+   "Community",
+   "Language",
+   "Trivia",
+   "Academics",
+   "Competition"
+  ],
+  "description": "Celebrate Latin American heritage and build community.",
+  "meeting": "Mondays \u00b7 2:45-4:00",
+  "room": "352",
+  "days": [
+   "Monday"
+  ],
+  "schedule": [
+   {
+    "day": "Monday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "2:45-4:00",
+  "leaders": [
+   "Jill Casey"
+  ],
+  "emails": [
+   "jill_casey@ipsd.org",
+   "peter_szewczyk@ipsd.org"
+  ],
+  "enrollment": "limited"
+ },
+ {
+  "name": "Science National Honors Society",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "Academics",
+   "Leadership",
+   "Service",
+   "Science",
+   "STEM"
+  ],
+  "description": "Recognize academic achievement and serve through subject-area projects.",
+  "meeting": "Every other Thursday, starting 9/11 \u00b7 2:30-3:00",
+  "room": "275",
+  "days": [
+   "Thursday"
+  ],
+  "schedule": [
+   {
+    "day": "Thursday",
+    "weeks": [
+     1,
+     3
+    ]
+   }
+  ],
+  "scheduleNote": "alternates weeks \u2014 confirm the start week with the sponsor",
+  "time": "2:30-3:00",
+  "leaders": [
+   "Della Kim"
+  ],
+  "emails": [
+   "della_kim@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "Science Olympiad",
+  "school": "waubonsie",
+  "category": "Competitive",
+  "tags": [
+   "Science",
+   "STEM",
+   "Competition",
+   "Academics"
+  ],
+  "description": "Compete in Science Olympiad events across every science discipline.",
+  "meeting": "Wednesday \u00b7 3-4",
+  "room": "275",
+  "days": [
+   "Wednesday"
+  ],
+  "schedule": [
+   {
+    "day": "Wednesday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "3-4",
+  "leaders": [
+   "Michael Hoehn"
+  ],
+  "emails": [
+   "michael_hoehn@ipsd.org",
+   "christopher_schramm@ipsd.org"
+  ],
+  "enrollment": "limited"
+ },
+ {
+  "name": "Show choir - Resonance",
+  "school": "waubonsie",
+  "category": "Special Interest",
+  "tags": [
+   "Music",
+   "Performance",
+   "Arts"
+  ],
+  "description": "Sing in a student vocal ensemble.",
+  "meeting": "Mondays & Wednesdays 5-8PM \u00b7 6-9 PM",
+  "room": "Choir , Auditorium",
+  "days": [
+   "Monday",
+   "Wednesday"
+  ],
+  "schedule": [
+   {
+    "day": "Monday",
+    "weeks": []
+   },
+   {
+    "day": "Wednesday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "6-9 PM",
+  "leaders": [
+   "Melissa Oneill",
+   "Axel Hageman"
+  ],
+  "emails": [
+   "melissa_oneill@ipsd.org",
+   "axel_hageman@ipsd.org"
+  ],
+  "enrollment": "limited"
+ },
+ {
+  "name": "Show choir - Sound Check",
+  "school": "waubonsie",
+  "category": "Special Interest",
+  "tags": [
+   "Music",
+   "Performance",
+   "Arts"
+  ],
+  "description": "Sing in a student vocal ensemble.",
+  "meeting": "Mondays & Wednesdays 6-9PM \u00b7 6-9 PM",
+  "room": "Choir , Auditorium",
+  "days": [
+   "Monday",
+   "Wednesday"
+  ],
+  "schedule": [
+   {
+    "day": "Monday",
+    "weeks": []
+   },
+   {
+    "day": "Wednesday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "6-9 PM",
+  "leaders": [
+   "Melissa Oneill",
+   "Axel Hageman"
+  ],
+  "emails": [
+   "melissa_oneill@ipsd.org",
+   "axel_hageman@ipsd.org"
+  ],
+  "enrollment": "limited"
+ },
+ {
+  "name": "Skills USA",
+  "school": "waubonsie",
+  "category": "Competitive",
+  "tags": [
+   "Careers",
+   "Engineering",
+   "Competition",
+   "Design"
+  ],
+  "description": "Compete in trade, technical, and leadership events through SkillsUSA.",
+  "meeting": "Wednesdays (Monthly) \u00b7 7:00-7:20 AM",
+  "room": "172",
+  "days": [
+   "Wednesday"
+  ],
+  "schedule": [
+   {
+    "day": "Wednesday",
+    "weeks": [
+     1
+    ]
+   }
+  ],
+  "scheduleNote": "meets monthly \u2014 confirm the week with the sponsor",
+  "time": "7:00-7:20 AM",
+  "leaders": [
+   "Steve Meyer",
+   "Matthew Zawlocki"
+  ],
+  "emails": [
+   "steve_meyer@ipsd.org",
+   "matthew_zawlocki@ipsd.org"
+  ],
+  "enrollment": "limited"
+ },
+ {
+  "name": "Spanish Honor Society",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "Academics",
+   "Leadership",
+   "Service",
+   "Language",
+   "Culture",
+   "Community"
+  ],
+  "description": "Recognize academic achievement and serve through subject-area projects.",
+  "meeting": "Mondays (Monthly) \u00b7 2:30-3ish",
+  "room": "292",
+  "days": [
+   "Monday"
+  ],
+  "schedule": [
+   {
+    "day": "Monday",
+    "weeks": [
+     1
+    ]
+   }
+  ],
+  "scheduleNote": "meets monthly \u2014 confirm the week with the sponsor",
+  "time": "2:30-3ish",
+  "leaders": [
+   "Belen Meraz"
+  ],
+  "emails": [
+   "belen_meraz@ipsd.org"
+  ],
+  "enrollment": "limited"
+ },
+ {
+  "name": "Special Olympics",
+  "school": "waubonsie",
+  "category": "Competitive",
+  "tags": [
+   "Service",
+   "Inclusion",
+   "Sports",
+   "Friendship"
+  ],
+  "description": "Coach and compete alongside Special Olympics athletes.",
+  "meeting": "Mondays, Tuesdays \u00b7 2:30-4",
+  "room": "153",
+  "days": [
+   "Monday",
+   "Tuesday"
+  ],
+  "schedule": [
+   {
+    "day": "Monday",
+    "weeks": []
+   },
+   {
+    "day": "Tuesday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "2:30-4",
+  "leaders": [
+   "Makaela Chavez",
+   "Taylor Schuch"
+  ],
+  "emails": [
+   "makaela_chavez@ipsd.org",
+   "taylor_schuch@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "Speech Team",
+  "school": "waubonsie",
+  "category": "Competitive",
+  "tags": [
+   "Public Speaking",
+   "Debate",
+   "Competition",
+   "Performance"
+  ],
+  "description": "Compete in speech events from oratory to dramatic interpretation.",
+  "meeting": "Mondays - Team Meeting, M-F Ind. Coachings \u00b7 Ranges from 2:30-5:00pm",
+  "room": "Team Meetings - Library Coaching - Rm 265",
+  "days": [
+   "Monday",
+   "Tuesday",
+   "Wednesday",
+   "Thursday",
+   "Friday"
+  ],
+  "schedule": [
+   {
+    "day": "Monday",
+    "weeks": []
+   },
+   {
+    "day": "Tuesday",
+    "weeks": []
+   },
+   {
+    "day": "Wednesday",
+    "weeks": []
+   },
+   {
+    "day": "Thursday",
+    "weeks": []
+   },
+   {
+    "day": "Friday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "Ranges from 2:30-5:00pm",
+  "leaders": [
+   "Natalie Schaefers",
+   "Tyler Noe"
+  ],
+  "emails": [
+   "natalie_schaefers@ipsd.org",
+   "tyler_noe@ipsd.org"
+  ],
+  "enrollment": "limited"
+ },
+ {
+  "name": "Student Council",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "Leadership",
+   "Service",
+   "Community",
+   "School Spirit"
+  ],
+  "description": "Represent the student body and plan school events.",
+  "meeting": "Wednesday \u00b7 6:45 am",
+  "room": "Everyone - 111/113 Seniors - 257 Juniors - 352 Sophomores - 252 Freshman - 250",
+  "days": [
+   "Wednesday"
+  ],
+  "schedule": [
+   {
+    "day": "Wednesday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "6:45 am",
+  "leaders": [
+   "Alexandra Kramerich",
+   "Alison Heuer"
+  ],
+  "emails": [
+   "alison_heuer@ipsd.org",
+   "alexandra_kramerich@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "Tri-M",
+  "school": "waubonsie",
+  "category": "Special Interest",
+  "tags": [
+   "Music",
+   "Performance",
+   "Leadership",
+   "Service"
+  ],
+  "description": "Music honor society recognizing and serving through musicianship.",
+  "meeting": "Wednesday \u00b7 7:00 AM",
+  "room": "Auditorium or online, according to calendar",
+  "days": [
+   "Wednesday"
+  ],
+  "schedule": [
+   {
+    "day": "Wednesday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "7:00 AM",
+  "leaders": [
+   "Daniel Beder",
+   "Chelsea King"
+  ],
+  "emails": [
+   "daniel_beder@ipsd.org",
+   "chelsea_king@ipsd.org"
+  ],
+  "enrollment": "limited"
+ },
+ {
+  "name": "UNAVOCE",
+  "school": "waubonsie",
+  "category": "Special Interest",
+  "tags": [
+   "Music",
+   "Performance",
+   "Arts"
+  ],
+  "description": "Sing in a student vocal ensemble.",
+  "meeting": "Tuesdays & Thursdays \u00b7 Ranges from 2:45-5",
+  "room": "Choir (121)",
+  "days": [
+   "Tuesday",
+   "Thursday"
+  ],
+  "schedule": [
+   {
+    "day": "Tuesday",
+    "weeks": []
+   },
+   {
+    "day": "Thursday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "Ranges from 2:45-5",
+  "leaders": [
+   "Chelsea King"
+  ],
+  "emails": [
+   "chelsea_king@ipsd.org"
+  ],
+  "enrollment": "limited"
+ },
+ {
+  "name": "USABO",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "STEM",
+   "Biology",
+   "Science",
+   "Competition",
+   "Academics"
+  ],
+  "description": "Prepare for the USA Biology Olympiad exam through intensive study.",
+  "meeting": "1st Tuesday (Monthly) \u00b7 2:30 - 3:30 pm",
+  "room": "Behind LMC",
+  "days": [
+   "Tuesday"
+  ],
+  "schedule": [
+   {
+    "day": "Tuesday",
+    "weeks": [
+     1
+    ]
+   }
+  ],
+  "scheduleNote": "",
+  "time": "2:30 - 3:30 pm",
+  "leaders": [
+   "Stephanie Rybka"
+  ],
+  "emails": [
+   "stephanie_rybka@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "Video Club / WVTV / Media",
+  "school": "waubonsie",
+  "category": "Special Interest",
+  "tags": [
+   "Media",
+   "Film",
+   "Creativity",
+   "Journalism"
+  ],
+  "description": "Produce broadcast video and run student media coverage.",
+  "meeting": "Schedule TBD",
+  "room": "Room 246",
+  "days": [],
+  "schedule": [],
+  "scheduleNote": "",
+  "time": "",
+  "leaders": [
+   "Brian Wiencek"
+  ],
+  "emails": [
+   "brian_wiencek@ipsd.org",
+   "wvtv@ipsd.org"
+  ],
+  "enrollment": "limited"
+ },
+ {
+  "name": "Warrior Nation",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "School Spirit",
+   "Community",
+   "Social",
+   "Team"
+  ],
+  "description": "Lead student spirit sections at games and school events.",
+  "meeting": "Follow WarriorNat1 on Instagram for details",
+  "room": "",
+  "days": [],
+  "schedule": [],
+  "scheduleNote": "",
+  "time": "",
+  "leaders": [
+   "A Gianakopoulos"
+  ],
+  "emails": [
+   "a_gianakopoulos@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "Warrior Strings",
+  "school": "waubonsie",
+  "category": "Special Interest",
+  "tags": [
+   "Music",
+   "Performance",
+   "Arts"
+  ],
+  "description": "Play in the school string ensemble.",
+  "meeting": "Thursdays \u00b7 2:30-4:00 P.M.",
+  "room": "227",
+  "days": [
+   "Thursday"
+  ],
+  "schedule": [
+   {
+    "day": "Thursday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "2:30-4:00 P.M.",
+  "leaders": [
+   "Shawnita Tyus"
+  ],
+  "emails": [
+   "shawnita_tyus@ipsd.org"
+  ],
+  "enrollment": "limited"
+ },
+ {
+  "name": "Warriors Who Code",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "STEM",
+   "Coding",
+   "Technology",
+   "Inclusion"
+  ],
+  "description": "Learn programming and build projects with peers.",
+  "meeting": "Tuesday \u00b7 2:30\u20133:15 pm",
+  "room": "254",
+  "days": [
+   "Tuesday"
+  ],
+  "schedule": [
+   {
+    "day": "Tuesday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "2:30\u20133:15 pm",
+  "leaders": [
+   "Stephen Spinelli"
+  ],
+  "emails": [
+   "stephen_spinelli@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "Weight Room Warriors",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "Fitness",
+   "Sports",
+   "Wellness",
+   "Team"
+  ],
+  "description": "Train and lift together in the school weight room.",
+  "meeting": "M, W, Th \u00b7 2:45pm - 4:00pm",
+  "room": "Upstairs Weight",
+  "days": [
+   "Monday",
+   "Wednesday",
+   "Thursday"
+  ],
+  "schedule": [
+   {
+    "day": "Monday",
+    "weeks": []
+   },
+   {
+    "day": "Wednesday",
+    "weeks": []
+   },
+   {
+    "day": "Thursday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "2:45pm - 4:00pm",
+  "leaders": [
+   "Matthew Walker"
+  ],
+  "emails": [
+   "matthew_walker@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "Yoga",
+  "school": "waubonsie",
+  "category": "Special Interest",
+  "tags": [
+   "Wellness",
+   "Health",
+   "Fitness",
+   "Recreation"
+  ],
+  "description": "Practice yoga and mindfulness.",
+  "meeting": "Select Tuesdays and Thursdays \u00b7 Spring 2026",
+  "room": "Dance",
+  "days": [
+   "Tuesday",
+   "Thursday"
+  ],
+  "schedule": [
+   {
+    "day": "Tuesday",
+    "weeks": []
+   },
+   {
+    "day": "Thursday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "dates vary \u2014 confirm with the sponsor",
+  "time": "Spring 2026",
+  "leaders": [
+   "Devin Bianchi"
+  ],
+  "emails": [
+   "devin_bianchi@ipsd.org"
+  ],
+  "enrollment": "open"
+ },
+ {
+  "name": "Youth and Government",
+  "school": "waubonsie",
+  "category": "Communities",
+  "tags": [
+   "Civics",
+   "Politics",
+   "Leadership",
+   "Public Speaking"
+  ],
+  "description": "Draft legislation and argue it at the state youth government assembly.",
+  "meeting": "Wednesday \u00b7 5:45-7:30 PM",
+  "room": "LMC",
+  "days": [
+   "Wednesday"
+  ],
+  "schedule": [
+   {
+    "day": "Wednesday",
+    "weeks": []
+   }
+  ],
+  "scheduleNote": "",
+  "time": "5:45-7:30 PM",
+  "leaders": [
+   "Kelly Prusila"
+  ],
+  "emails": [
+   "kelly_prusila@ipsd.org"
+  ],
+  "enrollment": "limited"
+ }
+]

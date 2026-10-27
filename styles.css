@@ -356,20 +356,22 @@ main { outline: none; min-height: 70vh; padding-bottom: 72px; }
 .step-tag.s-summer { background: #dfe6f3; }
 .aud { font-family: var(--mono); font-size: 12px; color: var(--pen); }
 .limit-note { font-size: 14px; margin-top: 2px; }
+.wv-note { margin-top: 10px; font-size: 15px; }
+.wv-note .link { font-size: 15px; }
+.wv-list .step-tag { display: none; }
+.wv-list .mini { display: block; }
 .also-note { margin-top: 12px; color: var(--ink-2); }
 .sec-note { color: var(--ink-3); font-size: 15px; margin: -10px 0 18px; max-width: 640px; }
 .sub-h { font-size: 22px; margin: 34px 0 12px; display: flex; align-items: baseline; gap: 10px; }
 
 /* ---------- Home: how it works / your path ---------- */
 .how { margin-top: 28px; }
-.how-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1.5px solid var(--ink); }
-.how-steps li { padding: 16px 20px 18px 0; border-right: 1px dashed var(--rule); margin-right: 20px; }
-.how-steps li:last-child { border-right: 0; margin-right: 0; }
-.how-n { font-family: var(--display); font-style: italic; font-size: 34px; color: var(--red); line-height: 1; display: block; margin-bottom: 6px; }
-.how-steps b { font-family: var(--display); font-weight: 500; font-size: 21px; }
-.how-steps p { color: var(--ink-2); font-size: 15px; margin: 6px 0 8px; }
-@media (max-width: 860px) { .how-steps { grid-template-columns: 1fr 1fr; } .how-steps li:nth-child(2) { border-right: 0; margin-right: 0; } }
-@media (max-width: 520px) { .how-steps { grid-template-columns: 1fr; } .how-steps li { border-right: 0; margin-right: 0; border-bottom: 1px dashed var(--rule); } }
+.how-quiz { display: flex; align-items: center; gap: 16px; text-decoration: none; background: var(--card); padding: 16px 20px; max-width: 640px; box-shadow: 0 8px 18px -14px rgba(60, 45, 20, .45); }
+.how-quiz b { font-family: var(--display); font-weight: 500; font-size: 22px; white-space: nowrap; }
+.how-quiz span { color: var(--ink-2); font-size: 15px; flex: 1; }
+.how-quiz svg { color: var(--pen); flex: none; }
+.how-quiz:hover b { color: var(--pen); }
+@media (max-width: 520px) { .how-quiz { flex-wrap: wrap; gap: 4px 12px; } .how-quiz span { flex-basis: 100%; order: 3; } }
 .path { margin-top: 28px; }
 .path-dirs { font-family: var(--display); font-size: 22px; margin-bottom: 14px; }
 .path-dirs a { color: var(--pen); text-underline-offset: 4px; }
@@ -382,7 +384,6 @@ main { outline: none; min-height: 70vh; padding-bottom: 72px; }
 .sug-main .muted { font-size: 14px; }
 .sug-why { color: var(--ink-2); font-size: 15px; margin-top: 4px; }
 .next { margin-bottom: 40px; }
-.nudge { background: var(--hi); padding: 10px 14px; margin-bottom: 24px; display: inline-block; transform: rotate(-.3deg); }
 
 /* Compact listing rows used in ladders and quiz results */
 .mini-list { display: grid; gap: 0; border-top: 1px solid var(--rule); }
@@ -451,45 +452,6 @@ main { outline: none; min-height: 70vh; padding-bottom: 72px; }
 .dir-links { margin-top: 12px; font-size: 14px; }
 .quiz-end { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 40px; }
 @media (prefers-reduced-motion: reduce) { .dir { transform: none !important; } }
-
-/* ---------- Check-in ---------- */
-.checkin { max-width: 760px; padding: 48px 0 0; }
-.checkin h1 { font-size: clamp(40px, 6vw, 64px); }
-.ci-item { font-family: var(--display); font-size: 24px; margin-top: 10px; line-height: 1.2; }
-.ci-item .muted { display: block; font-family: var(--body); font-size: 15px; margin-top: 4px; }
-.ci-group { border: 0; padding: 0; margin: 28px 0 0; }
-.ci-group legend { font-family: var(--display); font-size: 22px; padding: 0; margin-bottom: 10px; }
-.ci-opts { display: flex; flex-wrap: wrap; gap: 8px 10px; }
-.tick { display: inline-flex; align-items: center; gap: 9px; background: var(--card); border: 1.5px solid var(--rule); padding: 7px 12px 7px 10px; font-size: 15px; cursor: pointer; border-radius: 3px; }
-.tick:hover { border-color: var(--ink-2); }
-.tick .box { width: 16px; height: 16px; border: 1.6px solid var(--ink); border-radius: 50%; position: relative; flex: none; }
-.ci-opts.multi .tick .box { border-radius: 3px; }
-.tick[aria-pressed="true"] { border-color: var(--ink); background: #fffbe6; }
-.tick[aria-pressed="true"] .box::after { content: ""; position: absolute; left: 3px; top: -4px; width: 6px; height: 12px; border: solid var(--red); border-width: 0 2.5px 2.5px 0; transform: rotate(40deg); }
-.ci-text { display: flex; flex-direction: column; gap: 8px; margin-top: 28px; font-family: var(--display); font-size: 22px; }
-.ci-text input, .ci-text textarea { font: 16px/1.5 var(--body); border: 0; border-bottom: 1.5px solid var(--ink); background: transparent; padding: 8px 0; border-radius: 0; }
-.ci-text textarea { border: 1.5px solid var(--rule); background: var(--card); padding: 10px; resize: vertical; }
-.ci-text input:focus, .ci-text textarea:focus { outline: none; border-color: var(--pen); }
-.ci-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
-
-/* ---------- Journal ---------- */
-.journal-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; }
-@media (max-width: 900px) { .journal-grid { grid-template-columns: 1fr; } }
-.entries { list-style: none; margin: 0; padding: 0; border-top: 1.5px solid var(--ink); }
-.entry { display: grid; grid-template-columns: 64px 1fr auto; gap: 12px; padding: 14px 2px; border-bottom: 1px solid var(--rule); }
-.entry-date { color: var(--ink-3); padding-top: 4px; }
-.entry-title { font-family: var(--display); font-weight: 500; font-size: 21px; line-height: 1.2; display: block; }
-.entry-title[data-open] { cursor: pointer; }
-.entry-title[data-open]:hover { color: var(--pen); }
-.entry-meta { font-size: 15px; margin-top: 2px; }
-.entry-meta .e-3 { color: var(--green); font-weight: 600; }
-.entry-meta .e-1 { color: var(--red); font-weight: 600; }
-.entry-sub { color: var(--ink-2); font-size: 14px; }
-.entry-note { font-family: var(--display); font-style: italic; color: var(--ink-2); margin-top: 6px; }
-.entry-fields { color: var(--ink-3); margin-top: 6px; font-size: 12px; }
-.patterns { list-style: none; margin: 0; padding: 0; }
-.patterns li { background: var(--card); padding: 12px 16px 12px 40px; margin-bottom: 10px; position: relative; font-size: 16px; box-shadow: 0 6px 14px -12px rgba(60, 45, 20, .5); }
-.patterns li::before { content: "→"; position: absolute; left: 14px; top: 11px; color: var(--red); font-family: var(--mono); }
 
 /* ---------- Calendar ---------- */
 .cal { background: var(--card); padding: 12px; box-shadow: 0 8px 18px -14px rgba(60, 45, 20, .45); }
