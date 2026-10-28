@@ -2,7 +2,7 @@
 
 // Set to an email address to let "Suggest a listing" open a pre-filled email.
 const SUBMIT_EMAIL = "";
-const V = "18"; // bump with the ?v= in index.html when data changes
+const V = "19"; // bump with the ?v= in index.html when data changes
 
 const app = document.getElementById("app");
 const drawer = document.getElementById("drawer");
@@ -321,7 +321,7 @@ function openDrawer(id) {
         <a class="btn primary" href="${esc(o.url)}" target="_blank" rel="noopener">${atWV(o) ? "View on Mosaic" : "Official site"} ${ICON.ext}</a>
         <button class="btn save-btn" data-save="${o.id}" aria-pressed="${on}">${ICON.mark}<span data-t>${on ? "On your dashboard" : "Save to dashboard"}</span></button>
       </div>
-      <p class="source mono">${atWV(o) ? `From Mosaic, under Waubonsie Valley · checked ${esc(fmt(WV_CHECKED))}` : `Source: ${esc(o.url)} · checked ${esc(fmt(CHECKED))}`}</p>
+      <p class="source mono">${atWV(o) ? `From Mosaic, under Waubonsie Valley · checked ${esc(fmt(WV_CHECKED))}` : `Source: ${esc(o.url)} · checked ${esc(fmt(o.checked || CHECKED))}`}</p>
     </div>`;
   drawer.classList.add("open");
   drawer.setAttribute("aria-hidden", "false");

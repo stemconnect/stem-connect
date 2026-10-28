@@ -132,9 +132,9 @@ example CyberPatriot → Cyberpatriot Team). The card and details panel say so, 
 club links back with `"partOf"`. Use the **Clubs at WV** checkbox in the Clubs tab to see
 just these.
 
-## Automatic link check (every two days)
+## Automatic link check and updates (every three days)
 
-`.github/workflows/check-listings.yml` runs on GitHub every other day. It visits every
+`.github/workflows/check-listings.yml` runs on GitHub every third day. It visits every
 official link and posts the results in an issue called **Listings check**:
 
 - **Broken links:** pages that didn't load.
@@ -142,8 +142,11 @@ official link and posts the results in an issue called **Listings check**:
 - **All dates have passed:** look up next year's dates.
 - **Sites that block automatic checks:** these are usually fine.
 
-It doesn't change the site by itself. Program details have to be read on the official page,
-so you fix what it finds in `data.json` and upload the file.
+Two hours later a scheduled Claude routine
+(https://claude.ai/code/routines/trig_01B8pWmmWBm8dkbeJ3ZEphzy) reads that issue, fixes what
+it flagged from each official site, removes programs that have ended, adds a few new verified
+ones, and pushes to `main`. GitHub Pages and Vercel (https://stem-connect-beta.vercel.app/)
+both redeploy from `main`. Listings it adds or edits get a `"checked"` date of their own.
 
 **Turning it on.** The `.github` folder is hidden in Finder, so add the workflow through the
 GitHub website instead: in your repo, click **Add file → Create new file**, name it

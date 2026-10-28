@@ -1,11 +1,11 @@
-# Every two days: visit each listing's official link and flag anything that needs a look.
+# Every three days: visit each listing's official link and flag anything that needs a look.
 # Results go in a GitHub issue titled "Listings check". Nothing on the site changes by itself;
 # you fix what it finds in data.json and upload the file.
 name: Check listings
 
 on:
   schedule:
-    - cron: "0 13 */2 * *"   # about 8 a.m. Central, every other day
+    - cron: "0 13 */3 * *"   # about 8 a.m. Central, every third day
   workflow_dispatch:          # lets you run it any time from the Actions tab
 
 permissions:
